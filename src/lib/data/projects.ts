@@ -13,16 +13,16 @@ export const projects: Project[] = [
     slug: 'my-awesome-project',
     title: 'Мой крутой проект',
     description: 'Краткое описание проекта, что он делает и зачем.',
-    image: '/images/project1.jpg',
-    screenshots: ['/images/screenshot1.jpg', '/images/screenshot2.jpg'],
+    image: '/images/s.png',
+    screenshots: ['/images/s.png', '/images/s.png'],
     technologies: ['Svelte', 'TypeScript', 'Tailwind CSS']
   },
   {
     slug: 'another-project',
     title: 'Ещё один проект',
     description: 'Описание второго проекта.',
-    image: '/images/project2.jpg',
-    screenshots: ['/images/screenshot3.jpg'],
+    image: '/images/s.png',
+    screenshots: ['/images/s.png'],
     technologies: ['SvelteKit', 'Sanity']
   }
   // Добавьте свои проекты позже
