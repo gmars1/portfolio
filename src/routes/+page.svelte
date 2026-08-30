@@ -1,5 +1,6 @@
 <script lang="ts">
   import HeroSection from '$lib/components/HeroSection.svelte';
+  import SkillsTicker from '$lib/components/SkillsTicker.svelte';
   import AnimatedSection from '$lib/components/AnimatedSection.svelte'; // Возвращаем анимацию
   import { projects } from '$lib/data/projects';
 </script>
@@ -10,6 +11,8 @@
 </svelte:head>
 
 <HeroSection title="Привет, я LaGGe" subtitle="Студент и начинающий разработчик" />
+
+<SkillsTicker />
 
 <main class="max-w-4xl mx-auto px-4 py-16 space-y-24">
 
@@ -36,20 +39,22 @@
       {#each projects.slice(0, 2) as project, i}
         <!-- Добавляем задержку (delay), чтобы карточки появлялись по очереди -->
         <AnimatedSection delay={i * 150}>
-          <a href="/projects/{project.slug}" class="group block border border-gray-200 rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 bg-white">
-            <div class="h-48 overflow-hidden">
-              <img src={project.image} alt={project.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">{project.title}</h3>
-              <p class="text-gray-600 line-clamp-2 mb-4">{project.description}</p>
-              <div class="flex flex-wrap gap-2">
-                {#each project.technologies.slice(0, 3) as tech}
-                  <span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-md">{tech}</span>
-                {/each}
+            <a href="/projects/{project.slug}" class="group relative block p-1 rounded-2xl bg-gradient-to-br from-gray-200 to-gray-100 hover:from-blue-200 hover:to-purple-200 transition-all duration-500">
+              <div class="relative h-full bg-white/90 backdrop-blur-sm rounded-xl overflow-hidden border border-white/50 shadow-lg group-hover:shadow-2xl group-hover:-translate-y-2 transition-all duration-300">
+                <div class="h-52 overflow-hidden">
+                  <img src={project.image} alt={project.title} class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                </div>
+                <div class="p-6">
+                  <h3 class="text-2xl font-bold mb-2 text-gray-800 group-hover:text-blue-600 transition-colors">{project.title}</h3>
+                  <p class="text-gray-600 line-clamp-2 mb-4">{project.description}</p>
+                  <div class="flex flex-wrap gap-2">
+                    {#each project.technologies.slice(0, 3) as tech}
+                      <span class="bg-gray-100 text-gray-600 text-xs font-semibold px-2 py-1 rounded border border-gray-200">{tech}</span>
+                    {/each}
+                  </div>
+                </div>
               </div>
-            </div>
-          </a>
+            </a>
         </AnimatedSection>
       {/each}
     </div>
