@@ -8,6 +8,8 @@ export const entries: EntryGenerator = () => {
 	}));
 };
 
+export const prerender = true; 
+
 export const load: PageLoad = ({ params }) => {
 	// Ищем проект, у которого slug совпадает с тем, что в URL
 	const project = projects.find((p) => p.slug === params.slug);

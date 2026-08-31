@@ -11,7 +11,7 @@ const config = {
       fallback: '404.html' // опционально, для GitHub Pages
     }),
     prerender: {
-      default: true // все страницы генерируются статически
+      default: true 
     },
     paths: {
 			base: process.env.BASE_PATH || ''
