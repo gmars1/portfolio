@@ -14,7 +14,7 @@ const config = {
       default: true // все страницы генерируются статически
     },
     paths: {
-			base: process.argv.includes('dev') ? '' : '/portfolio'
+			base: process.env.BASE_PATH || ''
 		}
   }
 };
