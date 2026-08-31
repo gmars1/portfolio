@@ -8,7 +8,8 @@ const config = {
     adapter: adapter({
       pages: 'build',
       assets: 'build',
-      fallback: '404.html' // опционально, для GitHub Pages
+        fallback: '404.html', // опционально, для GitHub Pages
+      strict: false
     }),
     prerender: {
       default: false 
