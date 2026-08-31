@@ -10,20 +10,20 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    slug: 'my-awesome-project',
-    title: 'Мой крутой проект',
-    description: 'Краткое описание проекта, что он делает и зачем.',
+    slug: 'site-scrapper',
+    title: 'site scrapper',
+    description: 'Сервис для отслеживания контента на сайтах.',
     image: '',
     screenshots: ['/images/s.png', '/images/s.png'],
-    technologies: ['Svelte', 'TypeScript', 'Tailwind CSS']
+    technologies: ['java', 'spring', 'postgres', 'docker']
   },
   {
-    slug: 'another-project',
-    title: 'Ещё один проект',
-    description: 'Описание второго проекта.',
+    slug: 'haus',
+    title: 'haus',
+    description: 'Сервис для сожителей.',
     image: '/images/s.png',
     screenshots: ['/images/s.png'],
-    technologies: ['SvelteKit', 'Sanity']
+    technologies: ['go', 'postgres']
   }
   // Добавьте свои проекты позже
 ];

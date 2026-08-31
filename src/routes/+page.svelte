@@ -22,8 +22,8 @@
       Marsel<span class="text-purple-500">.</span>
     </h1>
     <p class="text-xl md:text-2xl text-gray-400 max-w-lg mb-10 hero-subtitle">
-      Frontend Developer & UI Designer.<br />
-      Создаю цифровые продукты с характером.
+      Backend Developer.<br />
+      Создаю цифровые продукты.
     </p>
     
     <div class="flex gap-4 hero-buttons">

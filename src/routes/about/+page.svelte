@@ -33,15 +33,10 @@
   <AnimatedSection delay={100}>
     <div class="prose prose-invert prose-lg max-w-none text-gray-300 mb-16">
       <p class="mb-6 text-xl leading-relaxed">
-        Привет! Меня зовут LaGGe. Я студент и разработчик, который видит в коде не просто набор символов, а способ создавать искусство. 
-        Мой путь начался с простого вопроса: "А как это работает?", который перерос в одержимость современными интерфейсами.
-      </p>
-      <p class="mb-6">
-        Сейчас мой основной фокус — экосистема <strong class="text-white">SvelteKit</strong> и <strong class="text-white">TypeScript</strong>. 
-        Я ценю производительность, чистоту кода и внимание к микро-взаимодействиям, которые делают сайт "живым".
+        Привет! Меня зовут Marsel. Я backend разработчик.
       </p>
       <p>
-        Помимо фронтенда, я активно изучаю бэкенд и базы данных, чтобы иметь полное представление о том, как рождаются цифровые продукты.
+        Активно изучаю бэкенд и базы данных, чтобы иметь полное представление о том, как рождаются цифровые продукты.
       </p>
     </div>
   </AnimatedSection>
@@ -54,9 +49,9 @@
     </h2>
     <div class="flex flex-wrap gap-3">
       {#each [
-        'Svelte', 'SvelteKit', 'TypeScript', 'JavaScript', 
-        'HTML5', 'CSS3', 'Tailwind CSS', 'Git', 
-        'Node.js', 'Vite', 'Figma', 'PostgreSQL'
+        'java', 'python', 'go', 'kotlin', 
+        'HTML5', 'CSS3', 'Tailwind CSS', 'Git',
+        'Vite', 'Figma', 'PostgreSQL'
       ] as skill}
         <span class="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-gray-300 font-medium hover:border-purple-500 hover:text-purple-400 hover:bg-purple-500/10 transition-all cursor-default shadow-sm">
           {skill}
@@ -68,7 +63,7 @@
   <!-- Секция Контактов -->
   <AnimatedSection delay={300}>
     <div class="mt-20 p-8 md:p-12 bg-gradient-to-br from-white/5 to-transparent rounded-3xl border border-white/10 backdrop-blur-sm">
-      <h2 class="text-3xl font-bold mb-4 text-white">Давайте создадим что-то крутое?</h2>
+      <h2 class="text-3xl font-bold mb-4 text-white">Контакты</h2>
       <p class="text-gray-400 mb-8 max-w-lg">
         Я всегда открыт для обсуждения новых идей, фриланс-проектов или просто интересного общения в IT-сфере.
       </p>
