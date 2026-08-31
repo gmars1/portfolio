@@ -41,7 +41,8 @@
   </section>
 
   <!-- CONTENT STARTS HERE -->
-  <section class="py-24 border-t border-white/10">
+  <!-- 👇 ДОБАВЬ ID СЮДА 👇 -->
+  <section id="main-content" class="py-24 border-t border-white/10">
     <AnimatedSection>
       <h2 class="text-3xl font-bold mb-12 flex items-center gap-2">
         <span class="w-2 h-2 bg-purple-500 rounded-full shadow-[0_0_10px_rgba(168,85,247,0.8)]"></span> 
