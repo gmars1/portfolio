@@ -12,7 +12,10 @@ const config = {
     }),
     prerender: {
       default: true // все страницы генерируются статически
-    }
+    },
+    paths: {
+			base: process.argv.includes('dev') ? '' : '/portfolio'
+		}
   }
 };
 
