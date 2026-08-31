@@ -1,11 +1,15 @@
 <script lang="ts">
   import AnimatedSection from '$lib/components/AnimatedSection.svelte';
+  import NeuralyzerTrap from '$lib/components/NeuralyzerTrap.svelte';
   import { projects } from '$lib/data/projects';
 </script>
 
 <svelte:head>
   <title>Marsel | Creative Developer</title>
 </svelte:head>
+
+<!-- АКТИВИРУЕМ ЛОВУШКУ -->
+<NeuralyzerTrap />
 
 <!-- Фоновые пятна -->
 <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
@@ -16,7 +20,6 @@
 <main class="px-4 max-w-6xl mx-auto">
   
   <!-- INTRO HERO SECTION -->
-  <!-- Этот блок занимает весь первый экран и "уезжает" при скролле -->
   <section class="min-h-screen flex flex-col justify-center items-center text-center relative z-10 intro-section">
     <h1 class="text-7xl md:text-9xl font-bold leading-none mb-6 tracking-tighter hero-title">
       Marsel<span class="text-purple-500">.</span>
@@ -65,7 +68,6 @@
 </main>
 
 <style>
-  /* Анимация появления при загрузке */
   .hero-title {
     animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     opacity: 0;
@@ -91,7 +93,6 @@
     }
   }
 
-  /* Эффект медленного пульсации фона */
   .animate-pulse-slow {
     animation: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
