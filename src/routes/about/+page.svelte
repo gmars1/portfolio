@@ -3,14 +3,14 @@
 </script>
 
 <svelte:head>
-  <title>Обо мне | LaGGe</title>
+  <title>Обо мне | Marsel </title>
   <meta name="description" content="Информация о разработчике, его навыках и опыте" />
 </svelte:head>
 
 <!-- НАВИГАЦИЯ -->
 <nav class="fixed top-0 left-0 w-full z-50 p-6 flex justify-between items-center bg-[#050505]/80 backdrop-blur-md border-b border-white/5">
   <a href="/" class="font-bold text-2xl tracking-tighter text-white hover:text-purple-400 transition-colors">
-    LaGGe<span class="text-purple-500">.</span>
+    Marsel<span class="text-purple-500">.</span>
   </a>
   <div class="flex gap-6 text-sm font-medium text-gray-400">
     <a href="/projects" class="hover:text-white transition-colors">Work</a>
