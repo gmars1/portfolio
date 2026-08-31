@@ -8,11 +8,10 @@ const config = {
     adapter: adapter({
       pages: 'build',
       assets: 'build',
-        fallback: '404.html', // опционально, для GitHub Pages
-      strict: false
+        fallback: '404.html' // опционально, для GitHub Pages
     }),
     prerender: {
-      default: false 
+      default: true 
     },
     paths: {
 			base: process.env.BASE_PATH || ''
