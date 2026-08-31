@@ -2,6 +2,8 @@ import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 import { projects } from '$lib/data/projects';
 
+export const prerender = true; 
+
 export const load: PageLoad = ({ params }) => {
 	// Ищем проект, у которого slug совпадает с тем, что в URL
 	const project = projects.find((p) => p.slug === params.slug);
@@ -16,5 +18,3 @@ export const load: PageLoad = ({ params }) => {
 	};
 };
 
-// Важно для SSG: говорим, что эту страницу нужно генерировать заранее
-export const prerender = true; 
