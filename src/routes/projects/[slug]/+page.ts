@@ -1,8 +1,12 @@
 import { error } from '@sveltejs/kit';
-import type { PageLoad } from './$types';
+import type { PageLoad, EntryGenerator } from './$types';
 import { projects } from '$lib/data/projects';
 
-export const prerender = true; 
+export const entries: EntryGenerator = () => {
+	return projects.map((project) => ({
+		slug: project.slug
+	}));
+};
 
 export const load: PageLoad = ({ params }) => {
 	// Ищем проект, у которого slug совпадает с тем, что в URL
