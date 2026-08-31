@@ -13,15 +13,15 @@ export const projects: Project[] = [
     slug: 'site-scrapper',
     title: 'site scrapper',
     description: 'Сервис для отслеживания контента на сайтах.',
-    image: '',
-    screenshots: ['/images/s.png', '/images/s.png'],
+    image: '/images/s.png',
+    screenshots: ['/images/s.png', '/images/s2.png'],
     technologies: ['java', 'spring', 'postgres', 'docker']
   },
   {
     slug: 'haus',
     title: 'haus',
     description: 'Сервис для сожителей.',
-    image: '/images/s.png',
+    image: '/images/s2.png',
     screenshots: ['/images/s.png'],
     technologies: ['go', 'postgres']
   }
