@@ -42,7 +42,7 @@
 
   <!-- СЛОЙ 3: Контент (стоит почти на месте или чуть плывет) -->
   <div bind:this={content} class="relative z-20 h-screen flex flex-col items-center justify-center text-white px-4 will-change-transform">
-    <h1 class="text-6xl md:text-8xl font-bold mb-4 drop-shadow-xl">LaGGe</h1>
+    <h1 class="text-6xl md:text-8xl font-bold mb-4 drop-shadow-xl">Marsel</h1>
     <p class="text-2xl md:text-3xl text-gray-200 drop-shadow-md">Frontend Developer</p>
     
     <div class="mt-12 animate-bounce">

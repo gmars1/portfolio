@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-  <title>Проекты | LaGGe</title>
+  <title>Проекты | Marsel</title>
   <meta name="description" content="Список всех моих разработок и проектов" />
 </svelte:head>
 

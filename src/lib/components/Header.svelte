@@ -28,7 +28,7 @@
   <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
     <!-- Логотип -->
     <a href="/" class="font-bold text-2xl tracking-tighter hover:text-purple-400 transition-colors">
-      LaGGe<span class="text-purple-500">.</span>
+      Marsel<span class="text-purple-500">.</span>
     </a>
 
     <!-- Навигация -->
@@ -40,7 +40,7 @@
 
     <!-- Кнопка (появляется только при скролле) -->
     <a 
-      href="mailto:hello@lagge.dev" 
+      href="mailto:hello@.dev" 
       class="hidden md:block px-5 py-2 bg-white/10 rounded-full text-sm font-semibold hover:bg-white/20 transition-all"
       class:opacity-0={!isScrolled}
       class:translate-y-[-10px]={!isScrolled}

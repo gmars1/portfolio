@@ -9,7 +9,7 @@
 </script>
 
 <svelte:head>
-  <title>{project.title} | LaGGe</title>
+  <title>{project.title} | Marsel</title>
   <meta name="description" content={project.description} />
 </svelte:head>
 

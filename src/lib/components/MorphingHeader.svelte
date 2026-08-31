@@ -68,7 +68,7 @@
   <div class="flex items-center gap-4">
     <!-- Маленький логотип (изначально скрыт) -->
     <span bind:this={logoSmall} class="text-xl font-bold text-white opacity-0 scale-0 block">
-      LaGGe<span class="text-purple-500">.</span>
+      Marsel<span class="text-purple-500">.</span>
     </span>
 
     <!-- Большой Hero-текст (изначально виден, но позиционируется как часть хедера для анимации) -->
@@ -81,7 +81,7 @@
     <a href="/" class="hover:text-white transition-colors">Home</a>
     <a href="/projects" class="hover:text-white transition-colors">Work</a>
     <a href="/about" class="hover:text-white transition-colors">About</a>
-    <a href="mailto:hello@lagge.dev" class="px-4 py-2 bg-white/10 rounded-full hover:bg-white/20 text-white transition-all">
+    <a href="mailto:hello@.dev" class="px-4 py-2 bg-white/10 rounded-full hover:bg-white/20 text-white transition-all">
       Contact
     </a>
   </div>

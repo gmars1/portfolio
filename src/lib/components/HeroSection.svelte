@@ -1,6 +1,6 @@
 <script lang="ts">
   let { 
-    title = "Привет, я LaGGe", 
+    title = "Привет, я Marsel", 
     subtitle = "Frontend Developer & Student" 
   } = $props();
 </script>

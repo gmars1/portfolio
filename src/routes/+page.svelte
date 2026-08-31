@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-  <title>LaGGe | Creative Developer</title>
+  <title>Marsel | Creative Developer</title>
 </svelte:head>
 
 <!-- Фоновые пятна -->
@@ -19,7 +19,7 @@
   <!-- Этот блок занимает весь первый экран и "уезжает" при скролле -->
   <section class="min-h-screen flex flex-col justify-center items-center text-center relative z-10 intro-section">
     <h1 class="text-7xl md:text-9xl font-bold leading-none mb-6 tracking-tighter hero-title">
-      LaGGe<span class="text-purple-500">.</span>
+      Marsel<span class="text-purple-500">.</span>
     </h1>
     <p class="text-xl md:text-2xl text-gray-400 max-w-lg mb-10 hero-subtitle">
       Frontend Developer & UI Designer.<br />
