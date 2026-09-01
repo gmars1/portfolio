@@ -1,5 +1,6 @@
 <script lang="ts">
   import { page } from '$app/stores';
+  import { base } from '$app/paths';
 </script>
 
 <section class="relative h-screen w-full flex flex-col justify-between overflow-hidden bg-[#050505]">

@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import gsap from 'gsap';
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  import { base } from '$app/paths';
 
   gsap.registerPlugin(ScrollTrigger);
 

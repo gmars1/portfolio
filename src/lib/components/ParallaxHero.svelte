@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
+  import { base } from '$app/paths';
   
   let container: HTMLDivElement;
   let plane: HTMLImageElement;
