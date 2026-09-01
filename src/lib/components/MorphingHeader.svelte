@@ -78,9 +78,9 @@
 
   <!-- Правая часть: Навигация -->
   <div bind:this={navLinks} class="flex gap-8 text-sm font-medium text-gray-400 opacity-0 translate-x-10">
-    <a href="/" class="hover:text-white transition-colors">Home</a>
-    <a href="/projects" class="hover:text-white transition-colors">Work</a>
-    <a href="/about" class="hover:text-white transition-colors">About</a>
+    <a href="{base}/" class="hover:text-white transition-colors">Home</a>
+    <a href="{base}/projects" class="hover:text-white transition-colors">Work</a>
+    <a href="{base}/about" class="hover:text-white transition-colors">About</a>
     <a href="mailto:hello@.dev" class="px-4 py-2 bg-white/10 rounded-full hover:bg-white/20 text-white transition-all">
       Contact
     </a>

@@ -13,10 +13,10 @@
 
 <!-- НАВИГАЦИЯ -->
 <nav class="fixed top-0 left-0 w-full z-50 p-6 flex justify-between items-center bg-[#050505]/80 backdrop-blur-md border-b border-white/5">
-  <a href="/" class="font-bold text-2xl tracking-tighter text-white hover:text-purple-400 transition-colors">
+  <a href="{base}/" class="font-bold text-2xl tracking-tighter text-white hover:text-purple-400 transition-colors">
     LaGGe<span class="text-purple-500">.</span>
   </a>
-  <a href="/projects" class="text-sm font-medium text-gray-400 hover:text-white transition-colors flex items-center gap-2">
+  <a href="{base}/projects" class="text-sm font-medium text-gray-400 hover:text-white transition-colors flex items-center gap-2">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
       <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
     </svg>

@@ -3,7 +3,7 @@
     <p>&copy; {new Date().getFullYear()} Моё портфолио. Все права защищены.</p>
   </div>
   <div class="mt-2">
-      <a href="/privacy" class="hover:text-blue-600 transition-colors underline">
+      <a href="{base}/privacy" class="hover:text-blue-600 transition-colors underline">
           Политика конфиденциальности
       </a>
   </div>

@@ -77,7 +77,7 @@
       <p class="text-xl text-gray-200 mb-8">
         Мы отправляемся в путешествие по миру современных технологий.
       </p>
-      <a href="/projects" class="inline-block bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 px-8 rounded-full transition-all hover:scale-105">
+      <a href="{base}/projects" class="inline-block bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 px-8 rounded-full transition-all hover:scale-105">
         Начать полет
       </a>
     </div>

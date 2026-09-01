@@ -10,11 +10,11 @@
 
 <!-- ВЕРХНЯЯ ПАНЕЛЬ НАВИГАЦИИ ДЛЯ ЭТОЙ СТРАНИЦЫ -->
 <nav class="fixed top-0 left-0 w-full z-50 p-6 flex justify-between items-center bg-[#050505]/80 backdrop-blur-md border-b border-white/5">
-  <a href="/" class="font-bold text-2xl tracking-tighter text-white hover:text-purple-400 transition-colors">
+  <a href="{base}/" class="font-bold text-2xl tracking-tighter text-white hover:text-purple-400 transition-colors">
     LaGGe<span class="text-purple-500">.</span>
   </a>
   <div class="flex gap-6 text-sm font-medium text-gray-400">
-    <a href="/about" class="hover:text-white transition-colors">About</a>
+    <a href="{base}/about" class="hover:text-white transition-colors">About</a>
     <a href="mailto:hello@lagge.dev" class="px-4 py-2 border border-white/20 rounded-full hover:bg-white/10 transition-all text-white">
       Contact
     </a>
@@ -34,7 +34,7 @@
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     {#each projects as project, i}
       <AnimatedSection delay={i * 100}>
-        <a href="/projects/{project.slug}" class="group relative block aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 bg-white/5 hover:border-purple-500/50 transition-all duration-500">
+        <a href="{base}/projects/{project.slug}" class="group relative block aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 bg-white/5 hover:border-purple-500/50 transition-all duration-500">
           <img src={project.image} alt={project.title} class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
           <div class="absolute bottom-0 left-0 p-6 w-full">
