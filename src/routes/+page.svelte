@@ -30,11 +30,11 @@
     </p>
     
     <div class="flex gap-4 hero-buttons">
-      <a href="{base}/projects" class="group relative px-8 py-3 bg-white text-black font-bold rounded-full overflow-hidden transition-all hover:scale-105">
+      <a href={resolve('/projects')} class="group relative px-8 py-3 bg-white text-black font-bold rounded-full overflow-hidden transition-all hover:scale-105">
         <span class="relative z-10">Мои работы</span>
         <div class="absolute inset-0 bg-gradient-to-r from-purple-400 to-blue-500 opacity-0 group-hover:opacity-20 transition-opacity"></div>
       </a>
-      <a href="{base}/about" class="px-8 py-3 border border-white/20 rounded-full hover:bg-white/10 transition-all">
+      <a href={resolve('/about')} class="px-8 py-3 border border-white/20 rounded-full hover:bg-white/10 transition-all">
         Обо мне
       </a>
     </div>
@@ -53,7 +53,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {#each projects as project, i}
         <AnimatedSection delay={i * 100}>
-          <a href="{base}/projects/{project.slug}" class="group relative block aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 bg-white/5 hover:border-purple-500/50 transition-all duration-500">
+          <a href={resolve('/projects/${project.slug}')} class="group relative block aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 bg-white/5 hover:border-purple-500/50 transition-all duration-500">
             <img src={project.image} alt={project.title} class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
             <div class="absolute bottom-0 left-0 p-6 w-full">
