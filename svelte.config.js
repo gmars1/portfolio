@@ -3,19 +3,21 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-  preprocess: vitePreprocess(), // Поддержка TypeScript и Tailwind (через PostCSS)
+  preprocess: vitePreprocess(),
+  compilerOptions: {
+    runes: ({ filename }) =>
+      filename.split(/[/\\]/).includes('node_modules') ? undefined : true
+  },
   kit: {
     adapter: adapter({
       pages: 'build',
       assets: 'build',
-        fallback: '404.html' // опционально, для GitHub Pages
+      fallback: '404.html',
+      strict: true
     }),
-    prerender: {
-      default: true 
-    },
     paths: {
-			base: process.env.BASE_PATH || ''
-		}
+      base: process.env.BASE_PATH || ''
+    }
   }
 };
 
