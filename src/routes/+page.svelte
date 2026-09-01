@@ -2,6 +2,7 @@
   import AnimatedSection from '$lib/components/AnimatedSection.svelte';
   import NeuralyzerTrap from '$lib/components/NeuralyzerTrap.svelte';
   import { projects } from '$lib/data/projects';
+  import { resolve } from '$app/paths';
 </script>
 
 <svelte:head>

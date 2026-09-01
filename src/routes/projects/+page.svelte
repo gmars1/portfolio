@@ -1,6 +1,7 @@
 <script lang="ts">
   import AnimatedSection from '$lib/components/AnimatedSection.svelte';
   import { projects } from '$lib/data/projects';
+  import { resolve } from '$app/paths';
 </script>
 
 <svelte:head>
