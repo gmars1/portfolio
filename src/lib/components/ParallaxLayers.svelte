@@ -29,7 +29,7 @@
   <div 
     bind:this={layer1}
     class="absolute inset-0 w-full h-[120%] bg-cover bg-center z-0 will-change-transform"
-    style="background-image: url('/images/sky-bg.png');" 
+    style="background-image: url('{base}/images/sky-bg.png');" 
   ></div>
 
   <!-- СЛОЙ 2: Средний план (движется быстрее) -->
@@ -37,7 +37,7 @@
   <div 
     bind:this={layer2}
     class="absolute bottom-0 left-0 w-full h-[80%] bg-contain bg-no-repeat bg-bottom z-10 will-change-transform"
-    style="background-image: url('/images/spring_logo.png');"
+    style="background-image: url('{base}/images/spring_logo.png');"
   ></div>
 
   <!-- СЛОЙ 3: Контент (стоит почти на месте или чуть плывет) -->

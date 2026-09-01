@@ -1,3 +1,5 @@
+import { base } from '$app/paths';
+
 export interface Project {
   slug: string;
   title: string;
@@ -13,16 +15,16 @@ export const projects: Project[] = [
     slug: 'site-scrapper',
     title: 'site scrapper',
     description: 'Сервис для отслеживания контента на сайтах.',
-    image: '/images/s.png',
-    screenshots: ['/images/s.png', '/images/s2.png'],
+    image: `${base}/images/s.png`,
+    screenshots: [`${base}/images/s.png`, `${base}/images/s2.png`],
     technologies: ['java', 'spring', 'postgres', 'docker']
   },
   {
     slug: 'haus',
     title: 'haus',
     description: 'Сервис для сожителей.',
-    image: '/images/s2.png',
-    screenshots: ['/images/s.png'],
+    image: `${base}/images/s2.png`,
+    screenshots: [`${base}/images/s.png`],
     technologies: ['go', 'postgres']
   }
   // Добавьте свои проекты позже

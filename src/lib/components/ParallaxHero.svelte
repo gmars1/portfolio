@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
-  import { resolve } from '$app/paths';
+  import { resolve, base } from '$app/paths';
   
   let container: HTMLDivElement;
   let plane: HTMLImageElement;
@@ -61,7 +61,7 @@
   <!-- Слой 1: Самолет -->
   <img 
     bind:this={plane}
-    src="/images/plane.png" 
+    src={resolve('/images/plane.png')}
     alt="Plane" 
     class="absolute top-1/2 left-1/2 w-64 md:w-96 z-10 transition-transform will-change-transform"
     style="transform-origin: center;"
@@ -71,7 +71,7 @@
   <div 
     bind:this={content}
     class="absolute inset-0 z-20 flex flex-col items-center justify-center text-white bg-cover bg-center transition-all duration-100 ease-out"
-    style="background-image: url('/images/interior.jpg');"
+    style="background-image: url('{base}/images/interior.jpg');"
   >
     <div class="bg-black/50 backdrop-blur-md p-8 rounded-2xl border border-white/10 text-center max-w-2xl mx-4">
       <h1 class="text-4xl md:text-6xl font-bold mb-4 tracking-tight">Добро пожаловать на борт</h1>
