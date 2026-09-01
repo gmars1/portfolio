@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
   import gsap from 'gsap';
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
-  import { base } from '$app/paths';
+  import { resolve } from '$app/paths';
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -79,9 +79,9 @@
 
   <!-- Правая часть: Навигация -->
   <div bind:this={navLinks} class="flex gap-8 text-sm font-medium text-gray-400 opacity-0 translate-x-10">
-    <a href="{base}/" class="hover:text-white transition-colors">Home</a>
-    <a href="{base}/projects" class="hover:text-white transition-colors">Work</a>
-    <a href="{base}/about" class="hover:text-white transition-colors">About</a>
+    <a href={resolve('/')} class="hover:text-white transition-colors">Home</a>
+    <a href={resolve('/projects')} class="hover:text-white transition-colors">Work</a>
+    <a href={resolve('/about')} class="hover:text-white transition-colors">About</a>
     <a href="mailto:hello@.dev" class="px-4 py-2 bg-white/10 rounded-full hover:bg-white/20 text-white transition-all">
       Contact
     </a>

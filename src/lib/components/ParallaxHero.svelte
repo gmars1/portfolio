@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
-  import { base } from '$app/paths';
+  import { resolve } from '$app/paths';
   
   let container: HTMLDivElement;
   let plane: HTMLImageElement;
@@ -78,7 +78,7 @@
       <p class="text-xl text-gray-200 mb-8">
         Мы отправляемся в путешествие по миру современных технологий.
       </p>
-      <a href="{base}/projects" class="inline-block bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 px-8 rounded-full transition-all hover:scale-105">
+      <a href={resolve('/projects')} class="inline-block bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 px-8 rounded-full transition-all hover:scale-105">
         Начать полет
       </a>
     </div>

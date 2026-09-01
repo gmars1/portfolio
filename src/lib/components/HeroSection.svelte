@@ -1,18 +1,18 @@
 <script lang="ts">
   import { page } from '$app/stores';
-  import { base } from '$app/paths';
+  import { resolve } from '$app/paths';
 </script>
 
 <section class="relative h-screen w-full flex flex-col justify-between overflow-hidden bg-[#050505]">
   
   <!-- Навигация внутри Hero -->
   <nav class="absolute top-0 left-0 w-full p-8 flex justify-between items-center z-20">
-    <a href="{base}/" class="font-bold text-2xl tracking-tighter text-white hover:text-purple-400 transition-colors">
+    <a href={resolve('/')} class="font-bold text-2xl tracking-tighter text-white hover:text-purple-400 transition-colors">
       LaGGe<span class="text-purple-500">.</span>
     </a>
     <div class="hidden md:flex gap-8 text-sm font-medium text-gray-400">
-      <a href="{base}/projects" class="hover:text-white transition-colors">Work</a>
-      <a href="{base}/about" class="hover:text-white transition-colors">About</a>
+      <a href={resolve('/projects')} class="hover:text-white transition-colors">Work</a>
+      <a href={resolve('/about')} class="hover:text-white transition-colors">About</a>
       <a href="mailto:hello@lagge.dev" class="px-4 py-2 border border-white/20 rounded-full hover:bg-white/10 transition-all">Contact</a>
     </div>
   </nav>

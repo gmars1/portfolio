@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { base } from '$app/paths';
+  import { resolve } from '$app/paths';
 </script>
 
 <footer class="border-t border-gray-200 py-6 mt-12">
@@ -7,7 +7,7 @@
     <p>&copy; {new Date().getFullYear()} Моё портфолио. Все права защищены.</p>
   </div>
   <div class="mt-2">
-      <a href="{base}/privacy" class="hover:text-blue-600 transition-colors underline">
+      <a href={resolve('/privacy')} class="hover:text-blue-600 transition-colors underline">
           Политика конфиденциальности
       </a>
   </div>
