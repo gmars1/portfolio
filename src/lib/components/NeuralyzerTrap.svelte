@@ -67,7 +67,6 @@
 		}
 
 		if (alreadySeen || reducedMotion) {
-			setScrollLock(false);
 			return;
 		}
 
