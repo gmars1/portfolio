@@ -9,18 +9,18 @@
 
 	let { delay = 0, duration = 800, children }: Props = $props();
 
-	function handleEnter(event: CustomEvent<{ isIntersecting: boolean }>) {
-		if (event.detail.isIntersecting) {
+	let visible = $state(false);
+
+	function handleEnter(event: CustomEvent<{ inView: boolean }>) {
+		if (event.detail.inView) {
 			visible = true;
 		}
 	}
-
-	let visible = $state(false);
 </script>
 
 <div
-	use:inview={{ once: true, unobserveOnEnter: true }}
-	on:inview={handleEnter}
+	use:inview={{ unobserveOnEnter: true }}
+	oninview={handleEnter}
 	class="transition-all ease-out"
 	class:opacity-100={visible}
 	class:translate-y-0={visible}
