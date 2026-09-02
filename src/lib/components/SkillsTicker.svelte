@@ -17,11 +17,20 @@
 	aria-label="Технологии"
 >
 	<div class="group relative flex overflow-x-hidden">
-		<div
-			class="animate-marquee flex gap-12 pr-12 text-2xl font-bold tracking-widest whitespace-nowrap text-gray-500 uppercase"
+<div
+			class="animate-marquee whitespace-nowrap flex gap-12 text-2xl font-bold text-gray-500 uppercase tracking-widest pr-12"
 		>
-			{#each skills as item}
-				<span class="cursor-default transition-colors hover:text-purple-400">{item}</span>
+			{#each skills as item (item)}
+				<span class="hover:text-purple-400 transition-colors cursor-default">{item}</span>
+			{/each}
+		</div>
+
+		<div
+			class="animate-marquee whitespace-nowrap flex gap-12 text-2xl font-bold text-gray-500 uppercase tracking-widest pr-12"
+			aria-hidden="true"
+		>
+			{#each skills as item (item)}
+				<span class="hover:text-purple-400 transition-colors cursor-default">{item}</span>
 			{/each}
 		</div>
 
