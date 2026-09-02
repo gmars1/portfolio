@@ -77,18 +77,18 @@
 				IT-сфере.
 			</p>
 
-<div class="flex flex-col gap-4 sm:flex-row">
-			{#each socials as social (social.href)}
-				<a
-					href={social.href}
-					target={social.href.startsWith('http') ? '_blank' : undefined}
-					rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-					class="flex items-center justify-center gap-2 rounded-xl bg-white px-8 py-4 font-bold text-black transition-all duration-300 hover:bg-purple-400 hover:text-white"
-				>
-					{social.label}
-				</a>
-			{/each}
-		</div>
+			<div class="flex flex-col gap-4 sm:flex-row">
+				{#each socials as social (social.href)}
+					<a
+						href={social.href}
+						target={social.href.startsWith('http') ? '_blank' : undefined}
+						rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+						class="flex items-center justify-center gap-2 rounded-xl bg-white px-8 py-4 font-bold text-black transition-all duration-300 hover:bg-purple-400 hover:text-white"
+					>
+						{social.label}
+					</a>
+				{/each}
+			</div>
 		</div>
 	</AnimatedSection>
 </div>
