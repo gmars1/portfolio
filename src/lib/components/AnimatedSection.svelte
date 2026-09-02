@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { inview } from 'svelte-inview';
+	import type { ObserverEventDetails } from 'svelte-inview';
 
 	type Props = {
 		delay?: number;
@@ -11,7 +12,7 @@
 
 	let visible = $state(false);
 
-	function handleEnter(event: CustomEvent<{ inView: boolean }>) {
+	function handleChange(event: CustomEvent<ObserverEventDetails>) {
 		if (event.detail.inView) {
 			visible = true;
 		}
@@ -20,7 +21,7 @@
 
 <div
 	use:inview={{ unobserveOnEnter: true }}
-	oninview={handleEnter}
+	oninview_change={handleChange}
 	class="transition-all ease-out"
 	class:opacity-100={visible}
 	class:translate-y-0={visible}
