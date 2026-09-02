@@ -1,15 +1,19 @@
 <script lang="ts">
-  import Header from '$lib/components/Header.svelte';
-  import Footer from '$lib/components/Footer.svelte';
-  import MorphingHeader from '$lib/components/MorphingHeader.svelte';
-  import ScrollProgress from '$lib/components/ScrollProgress.svelte';
-  import '../app.css';
+	import SiteNav from '$lib/components/SiteNav.svelte';
+	import Footer from '$lib/components/Footer.svelte';
+	import ScrollProgress from '$lib/components/ScrollProgress.svelte';
+	import '../app.css';
+
+	let { children } = $props();
 </script>
 
-<ScrollProgress/>
-<MorphingHeader />
+<a class="skip-link" href="#main-content">Перейти к содержимому</a>
 
-<main class="container mx-auto px-4 py-8 flex-1">
-  <slot />
+<ScrollProgress />
+<SiteNav />
+
+<main id="main-content" class="container mx-auto px-4 pt-28 pb-16 flex-1">
+	{@render children?.()}
 </main>
+
 <Footer />
