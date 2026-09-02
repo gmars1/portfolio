@@ -92,7 +92,6 @@
 	<AnimatedSection delay={400}>
 		<div class="mt-16 flex flex-col gap-4 border-t border-white/10 pt-8 sm:flex-row">
 			{#if project.link}
-				<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- external URL -->
 				<a
 					href={project.link}
 					target="_blank"
