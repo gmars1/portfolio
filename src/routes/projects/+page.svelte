@@ -50,7 +50,7 @@
 						<p class="line-clamp-1 text-sm text-gray-300">{project.description}</p>
 
 						<div class="mt-4 flex flex-wrap gap-2">
-							{#each project.technologies.slice(0, 3) as tech}
+							{#each project.technologies.slice(0, 3) as tech (tech)}
 								<span
 									class="rounded border border-white/10 bg-white/10 px-2 py-1 text-xs text-gray-200"
 								>
