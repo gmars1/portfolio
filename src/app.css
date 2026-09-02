@@ -18,7 +18,11 @@ html {
 }
 
 body {
-	font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+	font-family:
+		'Space Grotesk',
+		system-ui,
+		-apple-system,
+		sans-serif;
 	background-color: var(--bg);
 	color: var(--fg);
 	overflow-x: hidden;

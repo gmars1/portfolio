@@ -1,27 +1,36 @@
 <script lang="ts">
-	const skills = ['Svelte', 'TypeScript', 'Tailwind', 'Node.js', 'Git', 'Figma', 'Vite', 'HTML/CSS'];
+	const skills = [
+		'Svelte',
+		'TypeScript',
+		'Tailwind',
+		'Node.js',
+		'Git',
+		'Figma',
+		'Vite',
+		'HTML/CSS'
+	];
 </script>
 
 <div
-	class="w-full bg-white/[0.02] py-8 overflow-hidden border-y border-white/10 select-none"
+	class="w-full overflow-hidden border-y border-white/10 bg-white/[0.02] py-8 select-none"
 	role="marquee"
 	aria-label="Технологии"
 >
-	<div class="relative flex overflow-x-hidden group">
+	<div class="group relative flex overflow-x-hidden">
 		<div
-			class="animate-marquee whitespace-nowrap flex gap-12 text-2xl font-bold text-gray-500 uppercase tracking-widest pr-12"
+			class="animate-marquee flex gap-12 pr-12 text-2xl font-bold tracking-widest whitespace-nowrap text-gray-500 uppercase"
 		>
 			{#each skills as item}
-				<span class="hover:text-purple-400 transition-colors cursor-default">{item}</span>
+				<span class="cursor-default transition-colors hover:text-purple-400">{item}</span>
 			{/each}
 		</div>
 
 		<div
-			class="animate-marquee whitespace-nowrap flex gap-12 text-2xl font-bold text-gray-500 uppercase tracking-widest pr-12"
+			class="animate-marquee flex gap-12 pr-12 text-2xl font-bold tracking-widest whitespace-nowrap text-gray-500 uppercase"
 			aria-hidden="true"
 		>
 			{#each skills as item}
-				<span class="hover:text-purple-400 transition-colors cursor-default">{item}</span>
+				<span class="cursor-default transition-colors hover:text-purple-400">{item}</span>
 			{/each}
 		</div>
 	</div>

@@ -85,19 +85,19 @@
 
 <div
 	bind:this={stick}
-	class="fixed right-0 top-1/2 -translate-y-1/2 z-[90] translate-x-[150%] transition-transform duration-700 ease-out flex items-center pointer-events-none"
+	class="pointer-events-none fixed top-1/2 right-0 z-[90] flex translate-x-[150%] -translate-y-1/2 items-center transition-transform duration-700 ease-out"
 	aria-hidden="true"
 >
 	<div
-		class="bg-gray-900 border-l-4 border-purple-500 p-6 rounded-l-xl shadow-[0_0_30px_rgba(168,85,247,0.5)] flex items-center gap-4"
+		class="flex items-center gap-4 rounded-l-xl border-l-4 border-purple-500 bg-gray-900 p-6 shadow-[0_0_30px_rgba(168,85,247,0.5)]"
 	>
-		<div class="w-4 h-4 bg-red-500 rounded-full animate-ping"></div>
-		<span class="text-white font-bold tracking-widest text-sm uppercase">Scanning…</span>
+		<div class="h-4 w-4 animate-ping rounded-full bg-red-500"></div>
+		<span class="text-sm font-bold tracking-widest text-white uppercase">Scanning…</span>
 	</div>
 </div>
 
 <div
 	bind:this={flashOverlay}
-	class="fixed inset-0 bg-white z-[100] opacity-0 pointer-events-none transition-opacity duration-500 ease-out"
+	class="pointer-events-none fixed inset-0 z-[100] bg-white opacity-0 transition-opacity duration-500 ease-out"
 	aria-hidden="true"
 ></div>

@@ -22,42 +22,42 @@
 
 <NeuralyzerTrap />
 
-<div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
+<div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
 	<div
-		class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-purple-900/20 rounded-full blur-[120px] animate-pulse-slow"
+		class="animate-pulse-slow absolute top-[-10%] left-[-10%] h-[50vw] w-[50vw] rounded-full bg-purple-900/20 blur-[120px]"
 	></div>
 	<div
-		class="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-blue-900/20 rounded-full blur-[120px] animate-pulse-slow delay-1000"
+		class="animate-pulse-slow absolute right-[-10%] bottom-[-10%] h-[50vw] w-[50vw] rounded-full bg-blue-900/20 blur-[120px] delay-1000"
 	></div>
 </div>
 
-<section class="min-h-[70vh] flex flex-col justify-center items-center text-center relative z-10">
+<section class="relative z-10 flex min-h-[70vh] flex-col items-center justify-center text-center">
 	<AnimatedSection>
-		<h1 class="text-7xl md:text-9xl font-bold leading-none mb-6 tracking-tighter hero-title">
+		<h1 class="hero-title mb-6 text-7xl leading-none font-bold tracking-tighter md:text-9xl">
 			Marsel<span class="text-purple-500">.</span>
 		</h1>
 	</AnimatedSection>
 	<AnimatedSection delay={120}>
-		<p class="text-xl md:text-2xl text-gray-300 max-w-lg mb-10 hero-subtitle">
+		<p class="hero-subtitle mb-10 max-w-lg text-xl text-gray-300 md:text-2xl">
 			Backend Developer.<br />
 			Создаю цифровые продукты.
 		</p>
 	</AnimatedSection>
 
 	<AnimatedSection delay={240}>
-		<div class="flex flex-wrap gap-4 justify-center hero-buttons">
+		<div class="hero-buttons flex flex-wrap justify-center gap-4">
 			<a
 				href={resolve('/projects/')}
-				class="group relative px-8 py-3 bg-white text-black font-bold rounded-full overflow-hidden transition-all hover:scale-105"
+				class="group relative overflow-hidden rounded-full bg-white px-8 py-3 font-bold text-black transition-all hover:scale-105"
 			>
 				<span class="relative z-10">Мои работы</span>
 				<div
-					class="absolute inset-0 bg-gradient-to-r from-purple-400 to-blue-500 opacity-0 group-hover:opacity-20 transition-opacity"
+					class="absolute inset-0 bg-gradient-to-r from-purple-400 to-blue-500 opacity-0 transition-opacity group-hover:opacity-20"
 				></div>
 			</a>
 			<a
 				href={resolve('/about/')}
-				class="px-8 py-3 border border-white/20 rounded-full hover:bg-white/10 hover:border-white/40 transition-all"
+				class="rounded-full border border-white/20 px-8 py-3 transition-all hover:border-white/40 hover:bg-white/10"
 			>
 				Обо мне
 			</a>
@@ -65,21 +65,21 @@
 	</AnimatedSection>
 </section>
 
-<section class="py-24 border-t border-white/10">
+<section class="border-t border-white/10 py-24">
 	<AnimatedSection>
-		<h2 class="text-3xl font-bold mb-12 flex items-center gap-2">
-			<span class="w-2 h-2 bg-purple-500 rounded-full shadow-[0_0_10px_rgba(168,85,247,0.8)]"
+		<h2 class="mb-12 flex items-center gap-2 text-3xl font-bold">
+			<span class="h-2 w-2 rounded-full bg-purple-500 shadow-[0_0_10px_rgba(168,85,247,0.8)]"
 			></span>
 			Избранные проекты
 		</h2>
 	</AnimatedSection>
 
-	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+	<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
 		{#each projects as project, i (project.slug)}
 			<AnimatedSection delay={i * 100}>
 				<a
 					href={resolve(`/projects/${project.slug}/`)}
-					class="group relative block aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 bg-white/5 hover:border-purple-500/50 transition-all duration-500"
+					class="group relative block aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition-all duration-500 hover:border-purple-500/50"
 				>
 					<img
 						src={project.image}
@@ -88,18 +88,18 @@
 						decoding="async"
 						width="800"
 						height="600"
-						class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+						class="absolute inset-0 h-full w-full object-cover opacity-70 transition-all duration-700 group-hover:scale-105 group-hover:opacity-100"
 					/>
 					<div
 						class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"
 					></div>
-					<div class="absolute bottom-0 left-0 p-6 w-full">
+					<div class="absolute bottom-0 left-0 w-full p-6">
 						<h3
-							class="text-2xl font-bold mb-1 group-hover:text-purple-400 transition-colors text-white"
+							class="mb-1 text-2xl font-bold text-white transition-colors group-hover:text-purple-400"
 						>
 							{project.title}
 						</h3>
-						<p class="text-sm text-gray-300 line-clamp-1">{project.description}</p>
+						<p class="line-clamp-1 text-sm text-gray-300">{project.description}</p>
 					</div>
 				</a>
 			</AnimatedSection>

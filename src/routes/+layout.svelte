@@ -12,7 +12,7 @@
 <ScrollProgress />
 <SiteNav />
 
-<main id="main-content" class="container mx-auto px-4 pt-28 pb-16 flex-1">
+<main id="main-content" class="container mx-auto flex-1 px-4 pt-28 pb-16">
 	{@render children?.()}
 </main>
 

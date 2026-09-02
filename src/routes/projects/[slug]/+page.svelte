@@ -14,11 +14,11 @@
 	<meta property="og:description" content={project.description} />
 </svelte:head>
 
-<div class="max-w-5xl mx-auto">
+<div class="mx-auto max-w-5xl">
 	<div class="mb-6">
 		<a
 			href={resolve('/projects/')}
-			class="text-sm font-medium text-gray-400 hover:text-white transition-colors inline-flex items-center gap-2"
+			class="inline-flex items-center gap-2 text-sm font-medium text-gray-400 transition-colors hover:text-white"
 		>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -38,13 +38,13 @@
 	</div>
 
 	<AnimatedSection>
-		<h1 class="text-4xl md:text-6xl font-bold mb-6 text-white tracking-tight">
+		<h1 class="mb-6 text-4xl font-bold tracking-tight text-white md:text-6xl">
 			{project.title}
 		</h1>
-		<ul class="flex flex-wrap gap-3 mb-12 list-none p-0">
+		<ul class="mb-12 flex list-none flex-wrap gap-3 p-0">
 			{#each project.technologies as tech}
 				<li
-					class="bg-white/5 text-purple-300 px-3 py-1 rounded-full text-sm font-medium border border-purple-500/30 shadow-[0_0_10px_rgba(168,85,247,0.2)]"
+					class="rounded-full border border-purple-500/30 bg-white/5 px-3 py-1 text-sm font-medium text-purple-300 shadow-[0_0_10px_rgba(168,85,247,0.2)]"
 				>
 					{tech}
 				</li>
@@ -53,27 +53,27 @@
 	</AnimatedSection>
 
 	<AnimatedSection delay={100}>
-		<div class="rounded-2xl overflow-hidden shadow-2xl mb-16 border border-white/10 group">
+		<div class="group mb-16 overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
 			<img
 				src={project.image}
 				alt={project.title}
 				width="1280"
 				height="720"
-				class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
+				class="h-auto w-full object-cover transition-transform duration-700 group-hover:scale-105"
 			/>
 		</div>
 	</AnimatedSection>
 
 	<AnimatedSection delay={200}>
-		<div class="prose prose-invert prose-lg max-w-none text-gray-300 mb-16">
+		<div class="prose prose-invert prose-lg mb-16 max-w-none text-gray-300">
 			<p class="text-xl leading-relaxed text-white/90">{project.description}</p>
 		</div>
 	</AnimatedSection>
 
 	{#if project.screenshots && project.screenshots.length > 0}
 		<AnimatedSection delay={300}>
-			<h2 class="text-2xl font-bold mb-8 text-white">Галерея</h2>
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+			<h2 class="mb-8 text-2xl font-bold text-white">Галерея</h2>
+			<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
 				{#each project.screenshots as screenshot, i (screenshot)}
 					<img
 						src={screenshot}
@@ -82,7 +82,7 @@
 						decoding="async"
 						width="800"
 						height="600"
-						class="rounded-xl border border-white/10 hover:border-purple-500/50 transition-all duration-300 hover:shadow-[0_0_20px_rgba(168,85,247,0.3)]"
+						class="rounded-xl border border-white/10 transition-all duration-300 hover:border-purple-500/50 hover:shadow-[0_0_20px_rgba(168,85,247,0.3)]"
 					/>
 				{/each}
 			</div>
@@ -90,13 +90,13 @@
 	{/if}
 
 	<AnimatedSection delay={400}>
-		<div class="flex flex-col sm:flex-row gap-4 mt-16 pt-8 border-t border-white/10">
+		<div class="mt-16 flex flex-col gap-4 border-t border-white/10 pt-8 sm:flex-row">
 			{#if project.link}
 				<a
 					href={project.link}
 					target="_blank"
 					rel="noopener noreferrer"
-					class="flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-500 text-white font-semibold py-4 px-8 rounded-xl transition-all hover:scale-105 shadow-lg shadow-purple-900/20"
+					class="flex items-center justify-center gap-2 rounded-xl bg-purple-600 px-8 py-4 font-semibold text-white shadow-lg shadow-purple-900/20 transition-all hover:scale-105 hover:bg-purple-500"
 				>
 					<span>Посмотреть демо</span>
 					<svg
@@ -120,7 +120,7 @@
 					href={project.github}
 					target="_blank"
 					rel="noopener noreferrer"
-					class="flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-white font-semibold py-4 px-8 rounded-xl border border-white/10 transition-all hover:border-white/30"
+					class="flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-8 py-4 font-semibold text-white transition-all hover:border-white/30 hover:bg-white/10"
 				>
 					<span>Исходный код</span>
 					<svg

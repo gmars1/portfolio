@@ -1,20 +1,23 @@
 <svelte:head>
 	<title>Политика конфиденциальности — Marsel</title>
-	<meta name="description" content="Политика обработки персональных данных сайта-портфолио Marsel." />
+	<meta
+		name="description"
+		content="Политика обработки персональных данных сайта-портфолио Marsel."
+	/>
 </svelte:head>
 
-<div class="max-w-3xl mx-auto prose prose-invert prose-lg text-gray-300">
-	<h1 class="text-4xl font-bold text-white mb-8">Политика конфиденциальности</h1>
+<div class="prose prose-invert prose-lg mx-auto max-w-3xl text-gray-300">
+	<h1 class="mb-8 text-4xl font-bold text-white">Политика конфиденциальности</h1>
 
 	<p class="mb-6">
 		Настоящая Политика конфиденциальности описывает, как сайт-портфолио <strong>Marsel</strong>
-		(далее — «Сайт») собирает, использует и защищает информацию, которую вы предоставляете при
-		использовании наших сервисов.
+		(далее — «Сайт») собирает, использует и защищает информацию, которую вы предоставляете при использовании
+		наших сервисов.
 	</p>
 
-	<h2 class="text-2xl font-bold text-white mt-8 mb-4">1. Сбор информации</h2>
+	<h2 class="mt-8 mb-4 text-2xl font-bold text-white">1. Сбор информации</h2>
 	<p>Мы можем собирать следующие типы данных:</p>
-	<ul class="list-disc pl-6 mb-6 space-y-2">
+	<ul class="mb-6 list-disc space-y-2 pl-6">
 		<li>
 			<strong>Технические данные:</strong> IP-адрес, тип браузера, операционная система, разрешение экрана.
 		</li>
@@ -23,47 +26,47 @@
 			подключении сервиса аналитики).
 		</li>
 		<li>
-			<strong>Контактные данные:</strong> имя и email, если вы добровольно оставляете их через форму
-			обратной связи.
+			<strong>Контактные данные:</strong> имя и email, если вы добровольно оставляете их через форму обратной
+			связи.
 		</li>
 	</ul>
 
-	<h2 class="text-2xl font-bold text-white mt-8 mb-4">2. Использование сервисов аналитики</h2>
+	<h2 class="mt-8 mb-4 text-2xl font-bold text-white">2. Использование сервисов аналитики</h2>
 	<p>
 		На Сайте могут быть установлены счётчики аналитики. Эти сервисы позволяют нам анализировать
-		посещаемость и улучшать удобство использования Сайта. Вы можете отключить сбор данных,
-		установив блокировщик соответствующего сервиса в своём браузере.
+		посещаемость и улучшать удобство использования Сайта. Вы можете отключить сбор данных, установив
+		блокировщик соответствующего сервиса в своём браузере.
 	</p>
 
-	<h2 class="text-2xl font-bold text-white mt-8 mb-4">3. Цели сбора данных</h2>
-	<ul class="list-disc pl-6 mb-6 space-y-2">
+	<h2 class="mt-8 mb-4 text-2xl font-bold text-white">3. Цели сбора данных</h2>
+	<ul class="mb-6 list-disc space-y-2 pl-6">
 		<li>Улучшение работы и дизайна Сайта.</li>
 		<li>Анализ популярности контента.</li>
 		<li>Обеспечение безопасности и предотвращение мошенничества.</li>
 	</ul>
 
-	<h2 class="text-2xl font-bold text-white mt-8 mb-4">4. Передача данных третьим лицам</h2>
+	<h2 class="mt-8 mb-4 text-2xl font-bold text-white">4. Передача данных третьим лицам</h2>
 	<p>
 		Мы не продаём и не передаём ваши персональные данные третьим лицам, за исключением случаев,
 		предусмотренных законодательством, или когда это необходимо для работы сервисов аналитики в
 		обезличенном виде.
 	</p>
 
-	<h2 class="text-2xl font-bold text-white mt-8 mb-4">5. Ваши права</h2>
+	<h2 class="mt-8 mb-4 text-2xl font-bold text-white">5. Ваши права</h2>
 	<p>
-		Вы имеете право запросить информацию о хранящихся у нас ваших данных, потребовать их
-		исправления или удаления. Для этого свяжитесь с нами по электронной почте.
+		Вы имеете право запросить информацию о хранящихся у нас ваших данных, потребовать их исправления
+		или удаления. Для этого свяжитесь с нами по электронной почте.
 	</p>
 
-	<h2 class="text-2xl font-bold text-white mt-8 mb-4">6. Контакты</h2>
+	<h2 class="mt-8 mb-4 text-2xl font-bold text-white">6. Контакты</h2>
 	<p>Если у вас есть вопросы по данной Политике, пожалуйста, напишите нам:</p>
 	<p>
-		<a href="mailto:hello@marsel.dev" class="text-purple-400 hover:text-purple-300 underline">
+		<a href="mailto:hello@marsel.dev" class="text-purple-400 underline hover:text-purple-300">
 			hello@marsel.dev
 		</a>
 	</p>
 
-	<p class="mt-12 text-sm text-gray-500 border-t border-white/10 pt-4">
+	<p class="mt-12 border-t border-white/10 pt-4 text-sm text-gray-500">
 		Дата последнего обновления: 01.09.2026
 	</p>
 </div>

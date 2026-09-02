@@ -33,7 +33,7 @@
 </script>
 
 <div
-	class="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-400 z-[60]"
+	class="fixed top-0 left-0 z-[60] h-[3px] bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-400"
 	bind:this={progressBar}
 	style="width: 0%"
 	role="progressbar"
