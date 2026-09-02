@@ -63,7 +63,7 @@
 		try {
 			alreadySeen = sessionStorage.getItem('neuralyzer_seen') === '1';
 		} catch {
-			alreadySeen = false;
+			/* sessionStorage unavailable */
 		}
 
 		if (alreadySeen || reducedMotion) {
