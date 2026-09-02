@@ -1,31 +1,31 @@
-import { base } from '$app/paths';
-
 export interface Project {
-  slug: string;
-  title: string;
-  description: string;
-  image: string;
-  screenshots: string[];
-  technologies: string[];
-  link?: string; // необязательно
+	slug: string;
+	title: string;
+	description: string;
+	image: string;
+	screenshots: string[];
+	technologies: string[];
+	github?: string;
+	link?: string;
 }
 
 export const projects: Project[] = [
-  {
-    slug: 'site-scrapper',
-    title: 'site scrapper',
-    description: 'Сервис для отслеживания контента на сайтах.',
-    image: `${base}/images/s.png`,
-    screenshots: [`${base}/images/s.png`, `${base}/images/s2.png`],
-    technologies: ['java', 'spring', 'postgres', 'docker']
-  },
-  {
-    slug: 'haus',
-    title: 'haus',
-    description: 'Сервис для сожителей.',
-    image: `${base}/images/s2.png`,
-    screenshots: [`${base}/images/s.png`],
-    technologies: ['go', 'postgres']
-  }
-  // Добавьте свои проекты позже
+	{
+		slug: 'site-scrapper',
+		title: 'Site Scrapper',
+		description: 'Сервис для отслеживания изменений контента на сайтах.',
+		image: '/images/s.png',
+		screenshots: ['/images/s.png', '/images/s2.png'],
+		technologies: ['Java', 'Spring', 'PostgreSQL', 'Docker'],
+		github: 'https://github.com/marsel/site-scrapper'
+	},
+	{
+		slug: 'haus',
+		title: 'Haus',
+		description: 'Сервис для управления бытом и задачами среди соседей.',
+		image: '/images/s2.png',
+		screenshots: ['/images/s2.png', '/images/s.png'],
+		technologies: ['Go', 'PostgreSQL'],
+		github: 'https://github.com/marsel/haus'
+	}
 ];

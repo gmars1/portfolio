@@ -21,4 +21,3 @@ export const load: PageLoad = ({ params }) => {
 		project
 	};
 };
-
