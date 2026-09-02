@@ -1,27 +1,32 @@
 <script lang="ts">
-  import { inview } from 'svelte-inview'; // Важно: inview с маленькой буквы
+	import { inview } from 'svelte-inview';
 
-  let ref: HTMLDivElement;
-  let { delay = 0, duration = 800 } = $props();
+	type Props = {
+		delay?: number;
+		duration?: number;
+		children?: import('svelte').Snippet;
+	};
 
-  function handleEnter(event: CustomEvent) {
-    // Проверяем, действительно ли элемент появился на экране
-    if (event.detail.isIntersecting) {
-      const target = event.target as HTMLElement;
-      // Добавляем классы видимости
-      target.classList.add('opacity-100', 'translate-y-0');
-      // Убираем классы скрытности
-      target.classList.remove('opacity-0', 'translate-y-10');
-    }
-  }
+	let { delay = 0, duration = 800, children }: Props = $props();
+
+	function handleEnter(event: CustomEvent<{ isIntersecting: boolean }>) {
+		if (event.detail.isIntersecting) {
+			visible = true;
+		}
+	}
+
+	let visible = $state(false);
 </script>
 
-<div 
-  bind:this={ref} 
-  use:inview={{ once: true }} // once: true значит анимация проиграется только один раз
-  on:inview={handleEnter}     // Слушаем событие inview
-  class="opacity-100 translate-y-10 transition-all ease-out"
-  style="transition-duration: {duration}ms; transition-delay: {delay}ms;"
+<div
+	use:inview={{ once: true, unobserveOnEnter: true }}
+	on:inview={handleEnter}
+	class="transition-all ease-out"
+	class:opacity-100={visible}
+	class:translate-y-0={visible}
+	class:opacity-0={!visible}
+	class:translate-y-10={!visible}
+	style="transition-duration: {duration}ms; transition-delay: {delay}ms;"
 >
-  <slot />
+	{@render children?.()}
 </div>
