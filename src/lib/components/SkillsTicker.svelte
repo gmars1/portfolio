@@ -38,7 +38,7 @@
 			class="animate-marquee flex gap-12 pr-12 text-2xl font-bold tracking-widest whitespace-nowrap text-gray-500 uppercase"
 			aria-hidden="true"
 		>
-			{#each skills as item}
+			{#each skills as item (item)}
 				<span class="cursor-default transition-colors hover:text-purple-400">{item}</span>
 			{/each}
 		</div>
