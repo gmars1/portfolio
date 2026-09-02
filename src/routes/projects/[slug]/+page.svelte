@@ -42,7 +42,7 @@
 			{project.title}
 		</h1>
 		<ul class="mb-12 flex list-none flex-wrap gap-3 p-0">
-			{#each project.technologies as tech}
+			{#each project.technologies as tech (tech)}
 				<li
 					class="rounded-full border border-purple-500/30 bg-white/5 px-3 py-1 text-sm font-medium text-purple-300 shadow-[0_0_10px_rgba(168,85,247,0.2)]"
 				>
