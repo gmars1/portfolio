@@ -17,9 +17,9 @@
 	];
 
 	const socials = [
-		{ label: 'GitHub', href: 'https://github.com/marsel', icon: 'github' },
-		{ label: 'Telegram', href: 'https://t.me/marsel', icon: 'telegram' },
-		{ label: 'Email', href: 'mailto:hello@marsel.dev', icon: 'mail' }
+		{ label: 'GitHub', href: 'https://github.com/marsel' },
+		{ label: 'Telegram', href: 'https://t.me/marsel' },
+		{ label: 'Email', href: 'mailto:hello@marsel.dev' }
 	];
 </script>
 
@@ -53,7 +53,7 @@
 			Технический стек
 		</h2>
 		<ul class="flex list-none flex-wrap gap-3 p-0">
-			{#each skills as skill}
+			{#each skills as skill (skill)}
 				<li
 					class="cursor-default rounded-lg border border-white/10 bg-white/5 px-4 py-2 font-medium text-gray-300 shadow-sm transition-all hover:border-purple-500 hover:bg-purple-500/10 hover:text-purple-400"
 				>
@@ -77,18 +77,18 @@
 				IT-сфере.
 			</p>
 
-			<div class="flex flex-col gap-4 sm:flex-row">
-				{#each socials as social}
-					<a
-						href={social.href}
-						target={social.href.startsWith('http') ? '_blank' : undefined}
-						rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-						class="flex items-center justify-center gap-2 rounded-xl bg-white px-8 py-4 font-bold text-black transition-all duration-300 hover:bg-purple-400 hover:text-white"
-					>
-						{social.label}
-					</a>
-				{/each}
-			</div>
+<div class="flex flex-col gap-4 sm:flex-row">
+			{#each socials as social (social.href)}
+				<a
+					href={social.href}
+					target={social.href.startsWith('http') ? '_blank' : undefined}
+					rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+					class="flex items-center justify-center gap-2 rounded-xl bg-white px-8 py-4 font-bold text-black transition-all duration-300 hover:bg-purple-400 hover:text-white"
+				>
+					{social.label}
+				</a>
+			{/each}
+		</div>
 		</div>
 	</AnimatedSection>
 </div>
