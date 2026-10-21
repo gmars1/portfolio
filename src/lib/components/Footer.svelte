@@ -9,7 +9,7 @@
 		class="container mx-auto flex flex-col items-center justify-between gap-4 px-4 text-sm text-gray-500 sm:flex-row"
 	>
 		<p>&copy; {year} Marsel. Все права защищены.</p>
-		<div class="flex items-center gap-6">
+		<div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
 			<a
 				href="https://github.com/marsel"
 				target="_blank"
