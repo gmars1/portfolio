@@ -70,6 +70,7 @@ test('active section follows client navigation and history', async ({ page }) =>
 		.getByRole('link')
 		.filter({ has: page.getByRole('heading', { name: 'Haus', exact: true }) })
 		.click();
+	await expect(page).toHaveURL(/\/projects\/haus\/$/);
 	await expect(projects).toHaveAttribute('aria-current', 'page');
 	await page.goBack();
 	await expect(page).toHaveURL(/\/projects\/$/);
@@ -141,3 +142,103 @@ test('changing motion preference preserves project selection', async ({ page }) 
 	await expect(page.getByRole('link', { name: 'Открыть проект Haus', exact: true })).toBeVisible();
 	await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
 });
+
+test('gallery supports keyboard navigation and restores focus', async ({ page }) => {
+	await page.goto('projects/haus/');
+	const thumbnail = page.getByRole('link', { name: 'Увеличить визуал Haus 2' });
+	await thumbnail.click();
+	const dialog = page.getByRole('dialog', { name: 'Haus / Галерея' });
+	await expect(dialog).toBeVisible();
+	await expect(dialog.getByText('2 / 2', { exact: true })).toBeVisible();
+	await page.keyboard.press('ArrowRight');
+	await expect(dialog.getByText('1 / 2', { exact: true })).toBeVisible();
+	await page.keyboard.press('Escape');
+	await expect(dialog).not.toBeVisible();
+	await expect(thumbnail).toBeFocused();
+	expect(await page.evaluate(() => getComputedStyle(document.body).overflow)).not.toBe('hidden');
+});
+
+test('email can be copied', async ({ context, page }) => {
+	await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+	await page.goto('about/');
+	await page.getByRole('button', { name: 'Скопировать email' }).click();
+	await expect(page.getByRole('status')).toHaveText('Email скопирован');
+	expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('hello@marsel.dev');
+});
+
+test('email remains usable when clipboard is unavailable', async ({ page }) => {
+	await page.addInitScript(() => {
+		Object.defineProperty(navigator, 'clipboard', {
+			value: { writeText: () => Promise.reject(new Error('denied')) }
+		});
+	});
+	await page.goto('about/');
+	await page.getByRole('button', { name: 'Скопировать email' }).click();
+	await expect(page.getByRole('status')).toContainText('Не удалось скопировать');
+	await expect(page.getByRole('link', { name: 'Написать письмо' })).toHaveAttribute(
+		'href',
+		'mailto:hello@marsel.dev'
+	);
+});
+
+test('demonstration supports playback, pause and direct step selection', async ({ page }) => {
+	await page.goto('projects/site-scrapper/');
+	await page.getByRole('button', { name: 'Исследовать пример' }).click();
+	const steps = page.getByRole('group', { name: 'Шаги демонстрации' });
+	await expect(steps.getByRole('button', { name: /Исходный текст/ })).toHaveAttribute(
+		'aria-pressed',
+		'true'
+	);
+	await page.getByRole('button', { name: 'Пройти сценарий' }).click();
+	await expect(page.getByRole('button', { name: 'Пауза', exact: true })).toBeVisible();
+	await page.getByRole('button', { name: 'Пауза', exact: true }).click();
+	await steps.getByRole('button', { name: /Новая версия/ }).click();
+	await expect(page.getByRole('heading', { name: 'Новая версия', exact: true })).toBeVisible();
+	await page.getByRole('button', { name: 'Следующий шаг', exact: true }).click();
+	await expect(page.getByText('+ Добавлено', { exact: true })).toBeVisible();
+	await expect(page.getByText('Начало встречи: 19:00', { exact: true })).toBeVisible();
+	await page.getByRole('button', { name: 'Повторить сценарий' }).click();
+	await expect(steps.getByRole('button', { name: /Найденное изменение/ })).toHaveAttribute(
+		'aria-pressed',
+		'true',
+		{ timeout: 8000 }
+	);
+});
+
+test('motion preference stops scenario playback', async ({ page }) => {
+	await page.goto('projects/site-scrapper/');
+	await page.getByRole('button', { name: 'Исследовать пример' }).click();
+	await page.getByRole('button', { name: 'Пройти сценарий' }).click();
+	await expect(page.getByRole('button', { name: 'Пауза', exact: true })).toBeVisible();
+	await page.emulateMedia({ reducedMotion: 'reduce' });
+	await expect(page.getByRole('button', { name: 'Пауза', exact: true })).toHaveCount(0);
+	await page.getByRole('button', { name: 'Пройти сценарий' }).click();
+	await expect(page.getByText('+ Добавлено', { exact: true })).toBeVisible();
+});
+
+test('demonstration keeps its static explanation if the optional module fails', async ({
+	page
+}) => {
+	await page.goto('projects/site-scrapper/');
+	const launch = page.getByRole('button', { name: 'Исследовать пример' });
+	await expect(launch).toBeVisible();
+	await page.route('**/*.js', (route) => route.abort());
+	await launch.click();
+	await expect(
+		page.getByRole('status').filter({ hasText: 'Не удалось открыть интерактив' })
+	).toBeVisible();
+	await expect(page.getByText('Изменилось время начала встречи.', { exact: true })).toBeVisible();
+});
+
+for (const width of [320, 768]) {
+	test(`project layouts fit at ${width}px`, async ({ page }) => {
+		await page.setViewportSize({ width, height: 900 });
+		for (const route of ['projects/haus/', 'projects/site-scrapper/']) {
+			await page.goto(route);
+			await page.evaluate(() => document.fonts.ready);
+			expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(
+				width
+			);
+		}
+	});
+}
