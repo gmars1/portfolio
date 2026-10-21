@@ -1,42 +1,61 @@
-# sv
+# Портфолио Marsel
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Статическое портфолио на Svelte 5, SvelteKit, TypeScript и Tailwind CSS 4. Страницы пререндерятся; сервер приложения для публикации не нужен.
 
-## Creating a project
+## Запуск
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```sh
-# create a new project
-npx sv create my-app
-```
-
-To recreate this project with the same configuration:
+Используется Node.js 24.14.1 (см. `.nvmrc`).
 
 ```sh
-# recreate this project
-npx sv@0.17.0 create --template minimal --types ts --add eslint prettier sveltekit-adapter="adapter:static" tailwindcss="plugins:typography,forms" --install npm portfolio
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
+nvm use
+npm ci
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
-
-To create a production version of your app:
+## Проверки и сборка
 
 ```sh
+npm run check
+npm run lint
 npm run build
+npm run preview
 ```
 
-You can preview the production build with `npm run preview`.
+Для размещения в подпапке задайте её без завершающего слеша:
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```sh
+BASE_PATH=/portfolio npm run build
+npm run preview
+```
+
+Результат записывается в `build/`. Для размещения в корне оставьте `BASE_PATH` пустым. Внутренние ссылки формируются через `resolve()`, пути файлов из `static/` — через `asset()` из `$app/paths`.
+
+## Браузерные проверки
+
+```sh
+npx playwright install chromium
+npm run test:e2e
+TEST_BASE_PATH=/audit-preview npm run test:e2e
+```
+
+На чистой Linux-системе могут понадобиться системные зависимости Chromium: `npx playwright install --with-deps chromium`.
+
+Playwright собирает production-версию и запускает собственный preview на порту 4173. Проверяются статический HTML без JS, изображения, навигация на 320/375/640 px, история переходов, reduced-motion, прокрутка и уход во время эффекта. Прогоны запускаются по очереди: они используют общий каталог сборки и порт. Внешние Google Fonts в тестах отключены, чтобы доступность сервиса не влияла на регрессии приложения.
+
+## Структура и редактирование
+
+- `src/routes/` — главная, обо мне, каталог, страница проекта и конфиденциальность.
+- `src/lib/data/projects.ts` — список проектов: slug, описания, технологии, изображения и внешние ссылки.
+- `src/lib/components/` — навигация, карточка проекта, декоративные эффекты и общие элементы.
+- `src/app.css` — Tailwind, типографика и общие стили приложения.
+- `static/images/` — изображения проектов.
+
+Чтобы добавить проект, добавьте запись в `projects.ts` с уникальным slug и разместите изображения в `static/images/`. Все записи автоматически используются каталогом, главной и генератором страниц `/projects/[slug]/`. Если демо или исходного кода нет, необязательные поля `link`/`github` можно не задавать.
+
+Контакты редактируются в SiteNav/Footer и страницах about/privacy. Публичный домен, canonical и sitemap пока не настроены; для них нужен окончательный адрес сайта.
+
+## Публикация
+
+`.github/workflows/deploy.yml` проверяет pull request и push в `master`: `npm ci`, типы, lint и браузерные тесты для корня и подпапки. Публикация GitHub Pages выполняется только при push в `master` после успешных проверок. Node берётся из `.nvmrc`; разрешения публикации выданы только deploy job.
+
+Workflow собирает сайт с `BASE_PATH=/<имя репозитория>`. Для собственного домена или сайта `<владелец>.github.io` задайте пустой BASE_PATH в workflow. В настройках GitHub Pages источником публикации должны быть GitHub Actions. В артефакте есть `404.html`; неизвестные адреса должны возвращать HTTP 404.
