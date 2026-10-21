@@ -1,53 +1,81 @@
-name: Deploy to GitHub Pages
+name: Validate and deploy to GitHub Pages
 
 on:
   push:
     branches: ['master']
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
+  validate:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        base_path: ['', '/audit-preview']
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Check types and style
+        run: npm run check && npm run lint
+      - name: Install browser
+        run: npx playwright install --with-deps chromium
+      - name: Test production build
+        env:
+          TEST_BASE_PATH: ${{ matrix.base_path }}
+        run: npm run test:e2e
+      - name: Upload failure traces
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-traces-${{ strategy.job-index }}
+          path: test-results/
+          retention-days: 7
+
   build_site:
+    needs: validate
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version-file: .nvmrc
           cache: npm
-
       - name: Install dependencies
-        run: npm install
-
-      - name: Check subpath build
-        env:
-          BASE_PATH: /audit-preview
-        run: npm run build
-
+        run: npm ci
       - name: Build
         env:
           BASE_PATH: '/${{ github.event.repository.name }}'
-        run: |
-          npm run build
-
-      - name: Upload Artifacts
+        run: npm run build
+      - name: Upload artifacts
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'build/'
+          path: build/
 
   deploy:
     needs: build_site
     runs-on: ubuntu-latest
-
     permissions:
       pages: write
       id-token: write
-
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     steps:
       - name: Deploy
         id: deployment
