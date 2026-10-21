@@ -1,9 +1,14 @@
 <script lang="ts">
 	import { asset, resolve } from '$app/paths';
+	import { onMount } from 'svelte';
 	import { projects } from '$lib/data/projects';
 	import Arrow from './Arrow.svelte';
 
 	let selected = $state(0);
+	let enhanced = $state(false);
+	onMount(() => {
+		enhanced = true;
+	});
 	const project = $derived(projects[selected]);
 </script>
 
@@ -36,12 +41,21 @@
 		</div>
 		<div class="spotlight-tabs" role="group" aria-label="Выбрать проект для просмотра">
 			{#each projects as item, i (item.slug)}
-				<button type="button" aria-pressed={selected === i} onclick={() => (selected = i)}>
-					<span class="project-index">{String(i + 1).padStart(2, '0')}</span>{item.title}<span
-						class="tab-dot"
-						aria-hidden="true"
-					></span>
-				</button>
+				{#if enhanced}
+					<button type="button" aria-pressed={selected === i} onclick={() => (selected = i)}>
+						<span class="project-index">{String(i + 1).padStart(2, '0')}</span>{item.title}<span
+							class="tab-dot"
+							aria-hidden="true"
+						></span>
+					</button>
+				{:else}
+					<a href={resolve(`/projects/${item.slug}/`)}
+						><span class="project-index">{String(i + 1).padStart(2, '0')}</span>{item.title}<span
+							class="tab-dot"
+							aria-hidden="true"
+						></span></a
+					>
+				{/if}
 			{/each}
 		</div>
 	</div>
@@ -198,7 +212,7 @@
 		flex-wrap: wrap;
 		border-top: 1px solid var(--border);
 	}
-	.spotlight-tabs button {
+	.spotlight-tabs :is(button, a) {
 		display: flex;
 		flex: 1;
 		align-items: center;
@@ -213,14 +227,14 @@
 			background 0.2s,
 			color 0.2s;
 	}
-	.spotlight-tabs button:last-child {
+	.spotlight-tabs :is(button, a):last-child {
 		border-right: 0;
 	}
 	.spotlight-tabs button[aria-pressed='true'] {
 		background: #76d6f209;
 		color: var(--fg);
 	}
-	.spotlight-tabs button:hover {
+	.spotlight-tabs :is(button, a):hover {
 		background: var(--surface-hover);
 	}
 	.project-index {
@@ -253,7 +267,7 @@
 		.scene-title.short {
 			font-size: 76px;
 		}
-		.spotlight-tabs button {
+		.spotlight-tabs :is(button, a) {
 			padding: 14px;
 			gap: 8px;
 		}
