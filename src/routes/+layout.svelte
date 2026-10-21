@@ -12,7 +12,7 @@
 <ScrollProgress />
 <SiteNav />
 
-<main id="main-content" class="shell site-main">
+<main tabindex="-1" id="main-content" class="shell site-main">
 	{@render children?.()}
 </main>
 

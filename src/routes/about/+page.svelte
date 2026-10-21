@@ -216,4 +216,10 @@
 			font-size: 13px;
 		}
 	}
+	@media (max-width: 380px) {
+		.skill-index,
+		.skill-dot {
+			display: none;
+		}
+	}
 </style>

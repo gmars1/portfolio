@@ -7,7 +7,7 @@
 		children?: Snippet;
 	};
 
-	let { delay = 0, duration = 800, children }: Props = $props();
+	let { delay = 0, duration = 450, children }: Props = $props();
 
 	// The HTML stays visible; animation only enhances a working page.
 	function reveal(node: HTMLDivElement, options: { delay: number; duration: number }) {
@@ -20,7 +20,7 @@
 			observer.disconnect();
 			animation = node.animate(
 				[
-					{ opacity: 0, transform: 'translateY(24px)' },
+					{ opacity: 0, transform: 'translateY(16px)' },
 					{ opacity: 1, transform: 'none' }
 				],
 				{ ...options, easing: 'ease-out', fill: 'backwards' }
