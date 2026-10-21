@@ -5,6 +5,7 @@
 	import Arrow from '$lib/components/Arrow.svelte';
 	import ProjectGallery from '$lib/components/ProjectGallery.svelte';
 	import ContactSection from '$lib/components/ContactSection.svelte';
+	import ScenarioPreview from '$lib/components/ScenarioPreview.svelte';
 
 	let { data }: { data: PageData } = $props();
 	const project = $derived(data.project);
@@ -85,6 +86,7 @@
 					</section>{/each}
 			</div>
 		</div>{/if}
+	{#if project.slug === 'site-scrapper'}<ScenarioPreview />{/if}
 	{#if project.screenshots.length}<section class="case-gallery" aria-labelledby="visual-title">
 			<div class="section-heading">
 				<div>
