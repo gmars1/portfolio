@@ -12,8 +12,20 @@
 <ScrollProgress />
 <SiteNav />
 
-<main id="main-content" class="container mx-auto flex-1 px-4 pt-28 pb-16">
+<main id="main-content" class="shell site-main">
 	{@render children?.()}
 </main>
 
 <Footer />
+
+<style>
+	.site-main {
+		padding-top: 100px;
+		min-height: 65vh;
+	}
+	@media (max-width: 600px) {
+		.site-main {
+			padding-top: 124px;
+		}
+	}
+</style>

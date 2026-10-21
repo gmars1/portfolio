@@ -98,7 +98,7 @@ test('reduced motion exposes every section immediately', async ({ page }) => {
 	).toHaveCount(0);
 });
 
-test('leaving an active intro cannot change another route', async ({ page }) => {
+test('project selection and navigation work with blocked storage', async ({ page }) => {
 	const errors: string[] = [];
 	page.on('pageerror', (error) => errors.push(error.message));
 	await page.addInitScript(() => {
@@ -109,10 +109,12 @@ test('leaving an active intro cannot change another route', async ({ page }) => 
 		});
 	});
 	await page.goto('./');
-	await page.getByRole('button', { name: 'Показать эффект' }).click();
+	await page
+		.getByRole('group', { name: 'Выбрать проект для просмотра' })
+		.getByRole('button', { name: /Haus/ })
+		.click();
 	await page.getByRole('navigation').getByRole('link', { name: 'Обо мне' }).click();
 	await expect(page.getByRole('heading', { level: 1 })).toContainText('обо мне');
-	await page.waitForTimeout(2200); // Outlive the original nested timer sequence.
 	expect(await page.evaluate(() => document.body.style.overflow)).toBe('');
 	expect(await page.evaluate(() => scrollY)).toBe(0);
 	expect(errors).toEqual([]);
@@ -123,12 +125,19 @@ test('unknown projects return 404', async ({ page }) => {
 	expect(response?.status()).toBe(404);
 });
 
-test('changing motion preference stops the optional effect', async ({ page }) => {
+test('changing motion preference preserves project selection', async ({ page }) => {
 	await page.goto('./');
-	await page.getByRole('button', { name: 'Показать эффект' }).click();
-	await expect(page.getByRole('button', { name: 'Остановить эффект' })).toBeVisible();
+	const selector = page.getByRole('group', { name: 'Выбрать проект для просмотра' });
+	await selector.getByRole('button', { name: /Haus/ }).click();
+	await expect(selector.getByRole('button', { name: /Haus/ })).toHaveAttribute(
+		'aria-pressed',
+		'true'
+	);
 	await page.emulateMedia({ reducedMotion: 'reduce' });
-	await expect(page.getByText('Scanning…')).toHaveCount(0);
-	await expect(page.getByRole('button', { name: 'Остановить эффект' })).toHaveCount(0);
+	await expect(selector.getByRole('button', { name: /Haus/ })).toHaveAttribute(
+		'aria-pressed',
+		'true'
+	);
+	await expect(page.getByRole('link', { name: 'Открыть проект Haus', exact: true })).toBeVisible();
 	await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
 });
