@@ -33,19 +33,19 @@
 
 <section class="relative z-10 flex min-h-[70vh] flex-col items-center justify-center text-center">
 	<AnimatedSection>
-		<h1 class="hero-title mb-6 text-7xl leading-none font-bold tracking-tighter md:text-9xl">
+		<h1 class="mb-6 text-7xl leading-none font-bold tracking-tighter md:text-9xl">
 			Marsel<span class="text-purple-500">.</span>
 		</h1>
 	</AnimatedSection>
 	<AnimatedSection delay={120}>
-		<p class="hero-subtitle mb-10 max-w-lg text-xl text-gray-300 md:text-2xl">
+		<p class="mb-10 max-w-lg text-xl text-gray-300 md:text-2xl">
 			Backend Developer.<br />
 			Создаю цифровые продукты.
 		</p>
 	</AnimatedSection>
 
 	<AnimatedSection delay={240}>
-		<div class="hero-buttons flex flex-wrap justify-center gap-4">
+		<div class="flex flex-wrap justify-center gap-4">
 			<a
 				href={resolve('/projects/')}
 				class="group relative overflow-hidden rounded-full bg-white px-8 py-3 font-bold text-black transition-all hover:scale-105"
@@ -112,32 +112,6 @@
 </div>
 
 <style>
-	.hero-title {
-		animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-		animation-delay: 0.1s;
-		opacity: 0;
-		transform: translateY(40px);
-	}
-
-	.hero-subtitle {
-		animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
-		opacity: 0;
-		transform: translateY(30px);
-	}
-
-	.hero-buttons {
-		animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
-		opacity: 0;
-		transform: translateY(20px);
-	}
-
-	@keyframes fadeUp {
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-
 	.animate-pulse-slow {
 		animation: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 	}

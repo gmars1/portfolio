@@ -1,33 +1,53 @@
 <script lang="ts">
-	import { inview } from 'svelte-inview';
-	import type { ObserverEventDetails } from 'svelte-inview';
+	import type { Snippet } from 'svelte';
 
 	type Props = {
 		delay?: number;
 		duration?: number;
-		children?: import('svelte').Snippet;
+		children?: Snippet;
 	};
 
 	let { delay = 0, duration = 800, children }: Props = $props();
 
-	let visible = $state(false);
+	// The HTML stays visible; animation only enhances a working page.
+	function reveal(node: HTMLDivElement, options: { delay: number; duration: number }) {
+		const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+		if (motion.matches || !('IntersectionObserver' in window) || !node.animate) return;
 
-	function handleChange(event: CustomEvent<ObserverEventDetails>) {
-		if (event.detail.inView) {
-			visible = true;
+		let animation: Animation | undefined;
+		const observer = new IntersectionObserver(([entry]) => {
+			if (!entry.isIntersecting) return;
+			observer.disconnect();
+			animation = node.animate(
+				[
+					{ opacity: 0, transform: 'translateY(24px)' },
+					{ opacity: 1, transform: 'none' }
+				],
+				{ ...options, easing: 'ease-out', fill: 'backwards' }
+			);
+		});
+
+		function stop() {
+			observer.disconnect();
+			animation?.cancel();
 		}
+
+		function onMotionChange() {
+			if (motion.matches) stop();
+		}
+
+		observer.observe(node);
+		motion.addEventListener('change', onMotionChange);
+
+		return {
+			destroy() {
+				stop();
+				motion.removeEventListener('change', onMotionChange);
+			}
+		};
 	}
 </script>
 
-<div
-	use:inview={{ unobserveOnEnter: true }}
-	oninview_change={handleChange}
-	class="transition-all ease-out"
-	class:opacity-100={visible}
-	class:translate-y-0={visible}
-	class:opacity-0={!visible}
-	class:translate-y-10={!visible}
-	style="transition-duration: {duration}ms; transition-delay: {delay}ms;"
->
+<div use:reveal={{ delay, duration }}>
 	{@render children?.()}
 </div>
