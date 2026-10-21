@@ -98,3 +98,22 @@ body::before {
 		scroll-behavior: auto !important;
 	}
 }
+
+/* Long-form content uses explicit typography rather than an unconfigured plugin. */
+@layer components {
+	.reading {
+		font-size: 1.125rem;
+		line-height: 1.8;
+		overflow-wrap: anywhere;
+	}
+	.reading > * + * {
+		margin-top: 1.25em;
+	}
+	.reading :where(strong) {
+		color: var(--fg);
+		font-weight: 700;
+	}
+	.reading :where(a) {
+		text-underline-offset: 0.2em;
+	}
+}

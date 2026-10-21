@@ -37,7 +37,7 @@
 	</AnimatedSection>
 
 	<AnimatedSection delay={100}>
-		<div class="prose prose-invert prose-lg mb-16 max-w-none text-gray-300">
+		<div class="reading mb-16 max-w-none text-gray-300">
 			<p class="mb-6 text-xl leading-relaxed">Привет! Меня зовут Marsel. Я backend-разработчик.</p>
 			<p class="leading-relaxed">
 				Активно изучаю бэкенд и базы данных, чтобы иметь полное представление о том, как рождаются

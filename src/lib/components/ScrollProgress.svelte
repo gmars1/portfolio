@@ -1,41 +1,42 @@
 <script lang="ts">
-	import { onMount, onDestroy } from 'svelte';
+	import { afterNavigate } from '$app/navigation';
+	import { onMount } from 'svelte';
 
 	let progressBar: HTMLDivElement | undefined = $state();
 	let frame = 0;
 
 	function update() {
 		frame = 0;
-		const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
 		const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-		const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
-		if (progressBar) progressBar.style.width = scrolled + '%';
+		const progress = height > 0 ? Math.min(1, Math.max(0, window.scrollY / height)) : 0;
+		if (progressBar) progressBar.style.transform = `scaleX(${progress})`;
 	}
 
-	function onScroll() {
-		if (frame) return;
-		frame = requestAnimationFrame(update);
+	function scheduleUpdate() {
+		if (!frame) frame = requestAnimationFrame(update);
 	}
+
+	afterNavigate(scheduleUpdate);
 
 	onMount(() => {
-		update();
-		window.addEventListener('scroll', onScroll, { passive: true });
-		window.addEventListener('resize', onScroll, { passive: true });
-	});
+		scheduleUpdate();
+		window.addEventListener('scroll', scheduleUpdate, { passive: true });
+		window.addEventListener('resize', scheduleUpdate, { passive: true });
+		const observer = new ResizeObserver(scheduleUpdate);
+		observer.observe(document.body);
 
-	onDestroy(() => {
-		if (frame) cancelAnimationFrame(frame);
-		if (typeof window !== 'undefined') {
-			window.removeEventListener('scroll', onScroll);
-			window.removeEventListener('resize', onScroll);
-		}
+		return () => {
+			if (frame) cancelAnimationFrame(frame);
+			observer.disconnect();
+			window.removeEventListener('scroll', scheduleUpdate);
+			window.removeEventListener('resize', scheduleUpdate);
+		};
 	});
 </script>
 
 <div
-	class="fixed top-0 left-0 z-[60] h-[3px] bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-400"
+	class="fixed top-0 left-0 z-[60] h-[3px] w-full origin-left bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-400"
 	bind:this={progressBar}
-	style="width: 0%"
-	role="progressbar"
-	aria-label="Прогресс прокрутки"
+	style="transform: scaleX(0)"
+	aria-hidden="true"
 ></div>

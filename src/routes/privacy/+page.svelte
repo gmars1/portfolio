@@ -6,7 +6,7 @@
 	/>
 </svelte:head>
 
-<div class="prose prose-invert prose-lg mx-auto max-w-3xl text-gray-300">
+<div class="reading mx-auto max-w-3xl text-gray-300">
 	<h1 class="mb-8 text-4xl font-bold text-white">Политика конфиденциальности</h1>
 
 	<p class="mb-6">

@@ -65,7 +65,7 @@
 	</AnimatedSection>
 
 	<AnimatedSection delay={200}>
-		<div class="prose prose-invert prose-lg mb-16 max-w-none text-gray-300">
+		<div class="reading mb-16 max-w-none text-gray-300">
 			<p class="text-xl leading-relaxed text-white/90">{project.description}</p>
 		</div>
 	</AnimatedSection>
@@ -80,9 +80,9 @@
 						alt="Скриншот {project.title} {i + 1}"
 						loading="lazy"
 						decoding="async"
-						width="800"
-						height="600"
-						class="rounded-xl border border-white/10 transition-all duration-300 hover:border-purple-500/50 hover:shadow-[0_0_20px_rgba(168,85,247,0.3)]"
+						width="1280"
+						height="720"
+						class="h-auto w-full rounded-xl border border-white/10 transition-all duration-300 hover:border-purple-500/50 hover:shadow-[0_0_20px_rgba(168,85,247,0.3)]"
 					/>
 				{/each}
 			</div>
