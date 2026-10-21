@@ -122,3 +122,13 @@ test('unknown projects return 404', async ({ page }) => {
 	const response = await page.goto('projects/does-not-exist/');
 	expect(response?.status()).toBe(404);
 });
+
+test('changing motion preference stops the optional effect', async ({ page }) => {
+	await page.goto('./');
+	await page.getByRole('button', { name: 'Показать эффект' }).click();
+	await expect(page.getByRole('button', { name: 'Остановить эффект' })).toBeVisible();
+	await page.emulateMedia({ reducedMotion: 'reduce' });
+	await expect(page.getByText('Scanning…')).toHaveCount(0);
+	await expect(page.getByRole('button', { name: 'Остановить эффект' })).toHaveCount(0);
+	await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+});
