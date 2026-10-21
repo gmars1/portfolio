@@ -43,9 +43,7 @@
 	</p>
 	<p>
 		По вопросам о сайте можно написать на
-		<a href="mailto:hello@marsel.dev" class="text-purple-400 underline hover:text-purple-300">
-			hello@marsel.dev
-		</a>.
+		<a href="mailto:hello@marsel.dev" class="underline"> hello@marsel.dev </a>.
 	</p>
 
 	<p class="mt-12 border-t border-white/10 pt-4 text-sm text-gray-500">
