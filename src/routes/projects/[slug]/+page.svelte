@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import AnimatedSection from '$lib/components/AnimatedSection.svelte';
-	import { resolve } from '$app/paths';
+	import { asset, resolve } from '$app/paths';
 
 	let { data }: { data: PageData } = $props();
 	const project = $derived(data.project);
@@ -55,7 +55,7 @@
 	<AnimatedSection delay={100}>
 		<div class="group mb-16 overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
 			<img
-				src={project.image}
+				src={asset(project.image)}
 				alt={project.title}
 				width="1280"
 				height="720"
@@ -76,7 +76,7 @@
 			<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
 				{#each project.screenshots as screenshot, i (screenshot)}
 					<img
-						src={screenshot}
+						src={asset(screenshot)}
 						alt="Скриншот {project.title} {i + 1}"
 						loading="lazy"
 						decoding="async"

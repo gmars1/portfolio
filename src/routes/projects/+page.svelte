@@ -1,7 +1,7 @@
 <script lang="ts">
 	import AnimatedSection from '$lib/components/AnimatedSection.svelte';
 	import { projects } from '$lib/data/projects';
-	import { resolve } from '$app/paths';
+	import { asset, resolve } from '$app/paths';
 </script>
 
 <svelte:head>
@@ -30,7 +30,7 @@
 					class="group relative block aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition-all duration-500 hover:border-purple-500/50"
 				>
 					<img
-						src={project.image}
+						src={asset(project.image)}
 						alt={project.title}
 						loading="lazy"
 						decoding="async"
