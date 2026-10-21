@@ -7,6 +7,13 @@ export interface Project {
 	technologies: string[];
 	github?: string;
 	link?: string;
+	caseStudy?: {
+		task?: string;
+		role?: string;
+		approach?: string;
+		decisions?: string;
+		result?: string;
+	};
 }
 
 export const projects: Project[] = [
