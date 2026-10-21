@@ -1,102 +1,63 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	let flashOverlay: HTMLDivElement | undefined = $state();
-	let stick: HTMLDivElement | undefined = $state();
-	let hasTriggered = false;
-	let reducedMotion = false;
-
-	function setScrollLock(lock: boolean) {
-		if (typeof document === 'undefined') return;
-		document.body.style.overflow = lock ? 'hidden' : '';
-	}
-
-	function handleScrollAttempt() {
-		if (hasTriggered || reducedMotion) return;
-
-		hasTriggered = true;
-		window.removeEventListener('wheel', handleScrollAttempt);
-		window.removeEventListener('touchstart', handleScrollAttempt);
-
-		triggerSequence();
-	}
-
-	function triggerSequence() {
-		try {
-			sessionStorage.setItem('neuralyzer_seen', '1');
-		} catch {
-			/* sessionStorage may be unavailable */
-		}
-
-		stick?.classList.remove('translate-x-[150%]');
-		stick?.classList.add('translate-x-0');
-
-		setTimeout(() => {
-			flashOverlay?.classList.remove('opacity-0', 'pointer-events-none');
-			flashOverlay?.classList.add('opacity-100');
-
-			setTimeout(() => {
-				setScrollLock(false);
-
-				document.getElementById('main-content')?.scrollIntoView({
-					behavior: 'smooth',
-					block: 'start'
-				});
-
-				stick?.classList.remove('translate-x-0');
-				stick?.classList.add('translate-x-[150%]');
-
-				setTimeout(() => {
-					flashOverlay?.classList.remove('opacity-100');
-					flashOverlay?.classList.add('opacity-0', 'pointer-events-none');
-				}, 800);
-			}, 400);
-		}, 800);
-	}
+	let active = $state(false);
+	let reducedMotion = $state(false);
 
 	onMount(() => {
-		if (typeof window === 'undefined') return;
-
-		reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-		let alreadySeen = false;
-		try {
-			alreadySeen = sessionStorage.getItem('neuralyzer_seen') === '1';
-		} catch {
-			/* sessionStorage unavailable */
+		const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+		function updateMotion() {
+			reducedMotion = motion.matches;
+			if (reducedMotion) active = false;
 		}
-
-		if (alreadySeen || reducedMotion) {
-			return;
-		}
-
-		setScrollLock(true);
-		window.addEventListener('wheel', handleScrollAttempt, { passive: true });
-		window.addEventListener('touchstart', handleScrollAttempt, { passive: true });
-
-		return () => {
-			setScrollLock(false);
-			window.removeEventListener('wheel', handleScrollAttempt);
-			window.removeEventListener('touchstart', handleScrollAttempt);
-		};
+		updateMotion();
+		motion.addEventListener('change', updateMotion);
+		return () => motion.removeEventListener('change', updateMotion);
 	});
 </script>
 
-<div
-	bind:this={stick}
-	class="pointer-events-none fixed top-1/2 right-0 z-[90] flex translate-x-[150%] -translate-y-1/2 items-center transition-transform duration-700 ease-out"
-	aria-hidden="true"
->
-	<div
-		class="flex items-center gap-4 rounded-l-xl border-l-4 border-purple-500 bg-gray-900 p-6 shadow-[0_0_30px_rgba(168,85,247,0.5)]"
-	>
-		<div class="h-4 w-4 animate-ping rounded-full bg-red-500"></div>
-		<span class="text-sm font-bold tracking-widest text-white uppercase">Scanning…</span>
+{#if !reducedMotion}
+	<div class="mb-4 flex justify-end">
+		<button
+			type="button"
+			class="rounded-full border border-white/20 px-4 py-2 text-sm text-gray-300 transition-colors hover:border-purple-400 hover:text-white"
+			aria-pressed={active}
+			onclick={() => (active = !active)}
+		>
+			{active ? 'Остановить эффект' : 'Показать эффект'}
+		</button>
 	</div>
-</div>
+{/if}
 
-<div
-	bind:this={flashOverlay}
-	class="pointer-events-none fixed inset-0 z-[100] bg-white opacity-0 transition-opacity duration-500 ease-out"
-	aria-hidden="true"
-></div>
+{#if active}
+	<div
+		class="scanner pointer-events-none fixed top-1/2 right-0 z-[40] -translate-y-1/2 rounded-l-xl border-l-4 border-purple-500 bg-gray-900 p-6 shadow-[0_0_30px_rgba(168,85,247,0.3)]"
+		aria-hidden="true"
+		onanimationend={() => (active = false)}
+	>
+		<span class="text-sm font-bold tracking-widest text-purple-300 uppercase">Scanning…</span>
+	</div>
+{/if}
+
+<style>
+	.scanner {
+		animation: scan 2s ease-in-out;
+	}
+
+	@keyframes scan {
+		0%,
+		100% {
+			transform: translateX(110%);
+		}
+		25%,
+		75% {
+			transform: translateX(0);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.scanner {
+			display: none;
+		}
+	}
+</style>
