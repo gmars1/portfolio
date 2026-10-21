@@ -1,9 +1,10 @@
 <script lang="ts">
+	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import AnimatedSection from '$lib/components/AnimatedSection.svelte';
 	import NeuralyzerTrap from '$lib/components/NeuralyzerTrap.svelte';
 	import SkillsTicker from '$lib/components/SkillsTicker.svelte';
 	import { projects } from '$lib/data/projects';
-	import { asset, resolve } from '$app/paths';
+	import { resolve } from '$app/paths';
 </script>
 
 <svelte:head>
@@ -77,31 +78,7 @@
 	<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
 		{#each projects as project, i (project.slug)}
 			<AnimatedSection delay={i * 100}>
-				<a
-					href={resolve(`/projects/${project.slug}/`)}
-					class="group relative block aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition-all duration-500 hover:border-purple-500/50"
-				>
-					<img
-						src={asset(project.image)}
-						alt={project.title}
-						loading="lazy"
-						decoding="async"
-						width="800"
-						height="600"
-						class="absolute inset-0 h-full w-full object-cover opacity-70 transition-all duration-700 group-hover:scale-105 group-hover:opacity-100"
-					/>
-					<div
-						class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"
-					></div>
-					<div class="absolute bottom-0 left-0 w-full p-6">
-						<h3
-							class="mb-1 text-2xl font-bold text-white transition-colors group-hover:text-purple-400"
-						>
-							{project.title}
-						</h3>
-						<p class="line-clamp-1 text-sm text-gray-300">{project.description}</p>
-					</div>
-				</a>
+				<ProjectCard {project} />
 			</AnimatedSection>
 		{/each}
 	</div>
