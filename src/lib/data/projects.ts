@@ -2,11 +2,18 @@ export interface Project {
 	slug: string;
 	title: string;
 	description: string;
-	image: string;
-	screenshots: string[];
+	image: `/images/${string}`;
+	screenshots: `/images/${string}`[];
 	technologies: string[];
 	github?: string;
 	link?: string;
+	caseStudy?: {
+		task?: string;
+		role?: string;
+		approach?: string;
+		decisions?: string;
+		result?: string;
+	};
 }
 
 export const projects: Project[] = [
