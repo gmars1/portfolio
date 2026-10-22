@@ -20,7 +20,14 @@
 			<span class="toolbar-mark" aria-hidden="true">↗</span>
 		</div>
 		<div class="spotlight-scene">
-			<img src={asset(project.image)} alt="" width="1280" height="720" fetchpriority="low" />
+			<img
+				src={asset(project.image)}
+				alt=""
+				width="1280"
+				height="720"
+				fetchpriority="low"
+				loading="lazy"
+			/>
 			<div class="scene-grid" aria-hidden="true"></div>
 			<div class="scene-orbit orbit-one" aria-hidden="true"></div>
 			<div class="scene-orbit orbit-two" aria-hidden="true"></div>
@@ -255,6 +262,9 @@
 		box-shadow: 0 0 9px #76d6f23b;
 	}
 	@media (max-width: 760px) {
+		.spotlight-scene > img {
+			display: none;
+		}
 		.spotlight-scene {
 			min-height: 290px;
 		}

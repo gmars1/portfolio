@@ -27,7 +27,7 @@
 		<span class="eyebrow">Портфолио разработчика</span>
 		<h1 id="hero-title">Marsel<span>.</span></h1>
 		<p class="hero-role">Backend Developer<span aria-hidden="true"> / </span></p>
-		<p class="hero-description">Создаю цифровые<br class="desktop-break" /> продукты.</p>
+		<p class="hero-description">Создаю цифровые<br class="hero-break" /> продукты.</p>
 		<div class="hero-actions">
 			<a class="button button-primary" href="#projects">Мои работы <Arrow direction="down" /></a><a
 				class="button"
@@ -206,9 +206,6 @@
 		.hero-description {
 			font-size: 26px;
 			margin-top: 12px;
-		}
-		.desktop-break {
-			display: none;
 		}
 		.hero-actions {
 			margin-top: 26px;
