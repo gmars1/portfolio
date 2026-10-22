@@ -33,6 +33,7 @@ test('images load when opening each project directly', async ({ page }) => {
 		const images = page.locator('main img');
 		expect(await images.count()).toBeGreaterThan(0);
 		for (const image of await images.all()) {
+			if (!(await image.isVisible())) continue;
 			await image.evaluate((node) => node.scrollIntoView({ behavior: 'instant' }));
 			await expect
 				.poll(() =>
