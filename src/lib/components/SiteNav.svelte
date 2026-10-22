@@ -123,7 +123,7 @@
 		nav > .nav-contact {
 			gap: 10px;
 			padding-inline: 12px;
-			min-height: 40px;
+			min-height: 44px;
 		}
 	}
 </style>
